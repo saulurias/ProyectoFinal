@@ -8,6 +8,7 @@ package mx.itson.pou.negocio;
 import javax.swing.JOptionPane;
 import mx.itson.pou.entidades.Pou;
 import mx.itson.pou.entidades.Producto;
+import mx.itson.pou.persistencia.PersistenciaCocina;
 
 /**
  * Entidad que posee los metodos que manejan el negocio del proyecto LibreriaKitchen
@@ -88,9 +89,11 @@ public class Comida  {
         }else {
             comida.setCantidad(comidaRestante);
         }
-        }
-        
-        
+        PersistenciaCocina persistenciaCocina = new PersistenciaCocina();
+        persistenciaCocina.updatePou(pou);
+        persistenciaCocina.updateComida(comida);
+       }
+ 
     
     }
     
@@ -128,7 +131,12 @@ public class Comida  {
             int totalComida = comida.getCantidad()+1;
             
             comida.setCantidad(totalComida);
+            
+            PersistenciaCocina persistenciaCocina = new PersistenciaCocina();
+            persistenciaCocina.updateComida(comida);
+            persistenciaCocina.updatePou(pou);
         }
+        
     }
 
     

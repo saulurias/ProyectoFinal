@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.itson.pou.entidades;
+package mx.itson.pou.vista;
 import java.util.ArrayList;
 import java.util.List;
+import mx.itson.pou.entidades.Pou;
+import mx.itson.pou.entidades.Producto;
 import mx.itson.pou.negocio.Comida;
 /**
  *

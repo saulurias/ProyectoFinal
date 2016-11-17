@@ -10,7 +10,7 @@ package mx.itson.pou.entidades;
  * @author SaulUrias
  */
 public class Producto {
-private String nombre;
+    private String nombre;
     private int costo;
     private int valorHambre;
     private int valorSalud;

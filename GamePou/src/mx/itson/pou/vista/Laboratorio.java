@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.itson.pou.entidades;
-import mx.itson.pou.entidades.Cocina;
+package mx.itson.pou.vista;
+import mx.itson.pou.vista.Cocina;
 /**
  *
  * @author SaulUrias
@@ -53,14 +53,11 @@ public class Laboratorio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Laboratorio");
-        setMaximumSize(new java.awt.Dimension(358, 500));
         setMinimumSize(new java.awt.Dimension(358, 500));
-        setPreferredSize(new java.awt.Dimension(358, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(350, 500));
 
         panelLaboratorio.setBackground(new java.awt.Color(0, 51, 255));
-        panelLaboratorio.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         panelLaboratorio.setPreferredSize(new java.awt.Dimension(0, 0));
         panelLaboratorio.setLayout(null);
 
