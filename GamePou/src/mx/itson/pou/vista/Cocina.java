@@ -18,9 +18,9 @@ public class Cocina extends javax.swing.JFrame {
     
     Pou pou = new Pou(5000,25,100,100,100);
     
-    Producto carne = new Producto("carne",150,25,0,-10,0,6);
-    Producto hamburguesa = new Producto("Hamburguesa", 100, 20, 0, -10, 0, 5);
-    Producto platano = new Producto("platano",50,15,0,-5,0,10);
+    Producto carne = new Producto(1,"carne",150,25,0,-10,0,6);
+    Producto hamburguesa = new Producto(2,"Hamburguesa", 100, 20, 0, -10, 0, 5);
+    Producto platano = new Producto(3,"platano",50,15,0,-5,0,10);
     
     List<Producto> productos = new ArrayList();
     int posicionProducto = 0;
@@ -246,6 +246,7 @@ public class Cocina extends javax.swing.JFrame {
         }else {
             AlimentarPou(productos.get(posicionProducto-1));
         }
+        
     }//GEN-LAST:event_btn_ComerActionPerformed
 
     
@@ -274,11 +275,7 @@ public class Cocina extends javax.swing.JFrame {
             btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(posicionProducto).getNombre()+".png")));
             
             posicionProducto++;
-        }
-        
-       
-        
-       
+        }  
     }
     
     /**

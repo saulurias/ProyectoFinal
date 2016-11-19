@@ -8,6 +8,7 @@ package mx.itson.pou.vista;
 import java.util.List;
 import mx.itson.pou.entidades.Pou;
 import mx.itson.pou.entidades.Producto;
+import mx.itson.pou.negocio.Negocio;
 import mx.itson.pou.persistencia.Persistencia;
 import static mx.itson.pou.vista.Principal.panelPrincipal;
 
@@ -22,6 +23,7 @@ public class VistaCocina extends javax.swing.JPanel {
      */
     public VistaCocina() {
         initComponents();
+        mostrarValoresPou();
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
@@ -29,6 +31,8 @@ public class VistaCocina extends javax.swing.JPanel {
     Persistencia persistencia = new Persistencia();
     Pou pou = persistencia.obtenerPou();
     List<Producto> productos = persistencia.obtenerProductos();
+    Negocio negocio = new Negocio();
+    int posicionProducto = 1;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +97,8 @@ public class VistaCocina extends javax.swing.JPanel {
         });
 
         lblCantidadComida.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        lblCantidadComida.setText("Hamburguesa X 5");
+        lblCantidadComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCantidadComida.setText("hamburguesa X 5");
 
         lblTienda.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
         lblTienda.setText("Tienda");
@@ -153,7 +158,17 @@ public class VistaCocina extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblCantidadComida)
+                    .addComponent(btn_Comida)
+                    .addComponent(btn_Comer))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btn_Tienda)
+                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -186,27 +201,26 @@ public class VistaCocina extends javax.swing.JPanel {
                             .addComponent(btn_Siguiente))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_Refrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(btn_Comida))
-                                .addComponent(lblCantidadComida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_Tienda)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btn_Refrigerador))))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(373, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_Comida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCantidadComida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Comer))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_Tienda)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblTienda))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -238,26 +252,13 @@ public class VistaCocina extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(90, 90, 90)
                             .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(66, 66, 66)
+                    .addGap(76, 76, 76)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_Comida)
-                            .addGap(2, 2, 2)
-                            .addComponent(lblCantidadComida)
-                            .addGap(2, 2, 2)
-                            .addComponent(btn_Comer))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(90, 90, 90)
-                                    .addComponent(lblRefrigerador))
-                                .addComponent(btn_Refrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btn_Tienda)
-                                    .addGap(4, 4, 4)
-                                    .addComponent(lblTienda)))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(90, 90, 90)
+                            .addComponent(lblRefrigerador))
+                        .addComponent(btn_Refrigerador))
+                    .addGap(0, 1, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,18 +268,21 @@ public class VistaCocina extends javax.swing.JPanel {
 
     private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
 
-        /*
+      
         if (posicionProducto > 3 || posicionProducto == 0) {
-            AlimentarPou(productos.get(0));
+            
+            negocio.Comer(productos.get(0), pou);
+            mostrarValoresPou();
         }else {
-            AlimentarPou(productos.get(posicionProducto-1));
+            
+            negocio.Comer(productos.get(posicionProducto-1), pou);
+            mostrarValoresPou();
         }
-    */
+    
     }//GEN-LAST:event_btn_ComerActionPerformed
 
     private void btn_ComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComidaActionPerformed
-        //AlimentarPou();
-        //obtenerProductos();
+        cambiarProducto();
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
     private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
@@ -310,6 +314,29 @@ public class VistaCocina extends javax.swing.JPanel {
         panelPrincipal.add(ventana);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
+    }
+    
+    public void mostrarValoresPou(){
+        progressHambre.setValue(pou.getValorHambre());
+        progressSalud.setValue(pou.getValorSalud());
+        progressEnergia.setValue(pou.getValorEnergia());
+        progressFelicidad.setValue(pou.getValorFelicidad());
+    }
+    
+    public void cambiarProducto(){
+        
+        if (posicionProducto > 2) {
+            lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+        
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(0).getNombre()+".png")));
+            posicionProducto = 0;
+        }else{
+            lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
+        
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(posicionProducto).getNombre()+".png")));
+            
+            posicionProducto++;
+        }  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

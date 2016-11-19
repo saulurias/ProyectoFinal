@@ -43,11 +43,14 @@ public class Negocio  {
         int felicidadPou = (pou.getValorFelicidad()+felicidad);  
         
         
+        
         /**
          * Se asigna el valor de hambre a Pou
          */
          if (hambrePou >= 100) {
             pou.setValorHambre(100);
+        }else if (hambrePou <= 0) {
+            pou.setValorHambre(0);
         }else {
             pou.setValorHambre(hambrePou);
         }
@@ -57,6 +60,8 @@ public class Negocio  {
          */
          if (saludPou >= 100) {
             pou.setValorSalud(100);
+        }else if (saludPou <= 0) {
+            pou.setValorSalud(0);
         }else {
             pou.setValorSalud(saludPou);
         }
@@ -67,8 +72,10 @@ public class Negocio  {
          */
         if (energiaPou >= 100) {
             pou.setValorEnergia(100);
-        }else{
-            pou.setValorEnergia(energiaPou);
+        }else if (saludPou <= 0) {
+            pou.setValorEnergia(0);
+        }else {
+            pou.setValorEnergia(saludPou);
         }
         
         /**
@@ -76,7 +83,9 @@ public class Negocio  {
          */
         if (felicidadPou >= 100){
             pou.setValorFelicidad(100);
-        }else{
+        }else if (felicidadPou <= 0) {
+            pou.setValorFelicidad(0);
+        }else {
             pou.setValorFelicidad(felicidadPou);
         }
         
