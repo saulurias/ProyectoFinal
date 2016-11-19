@@ -28,7 +28,7 @@ public class VistaCocina extends javax.swing.JPanel {
     
     Persistencia persistencia = new Persistencia();
     Pou pou = persistencia.obtenerPou();
-    List<Producto> productos = persistencia.obtenerComida();
+    List<Producto> productos = persistencia.obtenerProductos();
 
     /**
      * This method is called from within the constructor to initialize the form.

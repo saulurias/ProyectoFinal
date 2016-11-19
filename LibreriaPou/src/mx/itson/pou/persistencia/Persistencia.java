@@ -52,7 +52,7 @@ public class Persistencia {
     */
    public void updateProducto(Producto producto){
        try {
-           String query = "UPDATE producto SET cantidad =" + producto.getCantidad() +" WHERE producto.nombre = '"+ producto.getNombre() +"';";
+           String query = "UPDATE producto SET cantidad =" + producto.getCantidad() +" WHERE producto.id = '"+ producto.getId() +"';";
                     
            PreparedStatement pst = conn.prepareStatement(query);
            pst.execute();
@@ -95,10 +95,9 @@ public class Persistencia {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             
-            while (rs.next()) {     
-               
+            while (rs.next()) {
                 //Hambre salued energia felicidad
-               Producto p = new Producto(rs.getString("nombre"),rs.getInt("costo"),rs.getInt("valorHambre"),rs.getInt("valorSalud"),rs.getInt("valorEnergia"),rs.getInt("valorFelicidad"),rs.getInt("cantidad")); 
+               Producto p = new Producto(rs.getInt("id"),rs.getString("nombre"),rs.getInt("costo"),rs.getInt("valorHambre"),rs.getInt("valorSalud"),rs.getInt("valorEnergia"),rs.getInt("valorFelicidad"),rs.getInt("cantidad")); 
                productos.add(p);
            }
             

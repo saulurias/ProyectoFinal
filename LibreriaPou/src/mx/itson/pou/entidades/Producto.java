@@ -10,6 +10,7 @@ package mx.itson.pou.entidades;
  * @author SaulUrias
  */
 public class Producto {
+    private int id;
     private String nombre;
     private int costo;
     private int valorHambre;
@@ -20,6 +21,7 @@ public class Producto {
    
     /**
      * Constructor de la entidad Producto
+     * @param id
      * @param nombre
      * @param costo
      * @param valorHambre
@@ -28,7 +30,8 @@ public class Producto {
      * @param valorFelicidad
      * @param cantidad 
      */
-    public Producto(String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, int cantidad) {
+    public Producto(int id, String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, int cantidad) {
+        this.id = id;
         this.nombre = nombre;
         this.costo = costo;
         this.valorHambre = valorHambre;
@@ -37,7 +40,23 @@ public class Producto {
         this.valorFelicidad = valorFelicidad;
         this.cantidad = cantidad;
     }
+
     
+    /**
+    * Metodo que obtiene el valor del atributo id de la entidad Producto
+    * @return 
+    */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Metodo que asigna el atributo id a la entidad Producto
+     * @param id 
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
     
     /**
     * Metodo que obtiene el valor del atributo nombre de la entidad Producto
@@ -151,5 +170,6 @@ public class Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+    
    
 }
