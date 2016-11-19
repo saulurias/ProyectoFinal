@@ -29,6 +29,11 @@ public class EstanteRefrigerador extends javax.swing.JPanel {
 
         panelEstante = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         lblImageEstante = new javax.swing.JLabel();
 
         panelEstante.setLayout(null);
@@ -37,7 +42,37 @@ public class EstanteRefrigerador extends javax.swing.JPanel {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         panelEstante.add(jButton1);
-        jButton1.setBounds(40, 80, 97, 65);
+        jButton1.setBounds(40, 70, 97, 65);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/platano.png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorderPainted(false);
+        panelEstante.add(jButton2);
+        jButton2.setBounds(230, 70, 72, 59);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hamburguesa.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        panelEstante.add(jButton3);
+        jButton3.setBounds(40, 150, 97, 68);
+
+        jLabel1.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Platano X 2");
+        panelEstante.add(jLabel1);
+        jLabel1.setBounds(220, 130, 100, 23);
+
+        jLabel2.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Carne X 5");
+        panelEstante.add(jLabel2);
+        jLabel2.setBounds(50, 130, 80, 23);
+
+        jLabel3.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Hamburguesa X 6");
+        panelEstante.add(jLabel3);
+        jLabel3.setBounds(20, 210, 150, 23);
 
         lblImageEstante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/estante.jpg"))); // NOI18N
         panelEstante.add(lblImageEstante);
@@ -58,6 +93,11 @@ public class EstanteRefrigerador extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblImageEstante;
     private javax.swing.JPanel panelEstante;
     // End of variables declaration//GEN-END:variables

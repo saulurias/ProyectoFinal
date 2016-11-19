@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mx.itson.pou.entidades.Pou;
 import mx.itson.pou.entidades.Producto;
-import mx.itson.pou.negocio.Comida;
+import mx.itson.pou.negocio.Negocio;
 /**
  *
  * @author SaulUrias
@@ -233,10 +233,10 @@ public class Cocina extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TiendaActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
-        Laboratorio laboratorio = new Laboratorio();
-        laboratorio.setVisible(true);
+       // Laboratorio laboratorio = new Laboratorio();
+       // laboratorio.setVisible(true);
         
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_btn_SiguienteActionPerformed
 
     private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
@@ -251,7 +251,7 @@ public class Cocina extends javax.swing.JFrame {
     
     public void AlimentarPou(Producto producto){
    
-     Comida comida = new Comida();
+     Negocio comida = new Negocio();
      
      comida.Comer(producto, pou);
      progressHambre.setValue(pou.getValorHambre());
