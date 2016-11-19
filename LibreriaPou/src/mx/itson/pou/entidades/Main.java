@@ -18,7 +18,7 @@ public class Main {
         
         Persistencia persistenciaCocina = new Persistencia();
         
-        List<Producto> productos = persistenciaCocina.obtenerComida();
+        List<Producto> productos = persistenciaCocina.obtenerProductos();
         
         
         Producto hamburguesa = productos.get(0);

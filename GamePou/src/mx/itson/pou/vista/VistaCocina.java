@@ -5,6 +5,10 @@
  */
 package mx.itson.pou.vista;
 
+import java.util.List;
+import mx.itson.pou.entidades.Pou;
+import mx.itson.pou.entidades.Producto;
+import mx.itson.pou.persistencia.Persistencia;
 import static mx.itson.pou.vista.Principal.panelPrincipal;
 
 /**
@@ -21,6 +25,10 @@ public class VistaCocina extends javax.swing.JPanel {
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
+    
+    Persistencia persistencia = new Persistencia();
+    Pou pou = persistencia.obtenerPou();
+    List<Producto> productos = persistencia.obtenerComida();
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -48,11 +48,11 @@ public class Persistencia {
   
    /**
     * Metodo que modifica los valores de producto en la base de datos
-    * @param comida 
+    * @param producto 
     */
-   public void updateComida(Producto comida){
+   public void updateProducto(Producto producto){
        try {
-           String query = "UPDATE producto SET cantidad =" + comida.getCantidad() +" WHERE producto.nombre = '"+ comida.getNombre() +"';";
+           String query = "UPDATE producto SET cantidad =" + producto.getCantidad() +" WHERE producto.nombre = '"+ producto.getNombre() +"';";
                     
            PreparedStatement pst = conn.prepareStatement(query);
            pst.execute();
@@ -87,7 +87,7 @@ public class Persistencia {
        return pou; 
    }
    
-   public List<Producto> obtenerComida(){
+   public List<Producto> obtenerProductos(){
        List<Producto> productos = new ArrayList();
 
        try {

@@ -147,7 +147,7 @@ public class Negocio  {
      */
     public void actualizarBD(Pou pou, Producto producto){
             Persistencia persistenciaCocina = new Persistencia();
-            persistenciaCocina.updateComida(producto);
+            persistenciaCocina.updateProducto(producto);
             persistenciaCocina.updatePou(pou);
     }
 }
