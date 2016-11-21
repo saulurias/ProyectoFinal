@@ -14,7 +14,7 @@ import mx.itson.pou.persistencia.Persistencia;
  *
  * @author SaulUrias
  */
-public class Estante extends javax.swing.JFrame {
+public final class Estante extends javax.swing.JFrame {
 
     /**
      * Creates new form Estante
@@ -22,14 +22,14 @@ public class Estante extends javax.swing.JFrame {
     public Estante() {
         initComponents();
         this.setSize(365, 300);
-        mostrarProductos();
+        MostrarProductos();
     }
     Persistencia persistencia = new Persistencia();
     List<Producto> productos = persistencia.obtenerProductos();
     Negocio negocio = new Negocio();
     
     
-    public void mostrarProductos(){
+    public void MostrarProductos(){
         lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(0).getNombre()+".png")));
         lblPrimera.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
         
@@ -49,12 +49,12 @@ public class Estante extends javax.swing.JFrame {
     private void initComponents() {
 
         panelEstante = new javax.swing.JPanel();
-        lblSegunda = new javax.swing.JLabel();
         lblPrimera = new javax.swing.JLabel();
+        lblSegunda = new javax.swing.JLabel();
         lblTercera = new javax.swing.JLabel();
+        lblPrimeraImagen = new javax.swing.JLabel();
         lblSegundaImagen = new javax.swing.JLabel();
         lblTerceraImagen = new javax.swing.JLabel();
-        lblPrimeraImagen = new javax.swing.JLabel();
         lblImageEstante = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,41 +62,35 @@ public class Estante extends javax.swing.JFrame {
 
         panelEstante.setLayout(null);
 
-        lblSegunda.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
-        lblSegunda.setForeground(new java.awt.Color(255, 255, 255));
-        lblSegunda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSegunda.setText("Platano X 2");
-        panelEstante.add(lblSegunda);
-        lblSegunda.setBounds(180, 130, 180, 23);
-
         lblPrimera.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
         lblPrimera.setForeground(new java.awt.Color(255, 255, 255));
         lblPrimera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPrimera.setText("Carne X 5");
         panelEstante.add(lblPrimera);
-        lblPrimera.setBounds(10, 130, 170, 23);
+        lblPrimera.setBounds(10, 130, 170, 20);
+
+        lblSegunda.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        lblSegunda.setForeground(new java.awt.Color(255, 255, 255));
+        lblSegunda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelEstante.add(lblSegunda);
+        lblSegunda.setBounds(180, 130, 180, 20);
 
         lblTercera.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
         lblTercera.setForeground(new java.awt.Color(255, 255, 255));
         lblTercera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTercera.setText("Hamburguesa X 6");
         panelEstante.add(lblTercera);
-        lblTercera.setBounds(0, 210, 190, 23);
+        lblTercera.setBounds(0, 210, 190, 20);
 
-        lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/platano.png"))); // NOI18N
-        lblSegundaImagen.setToolTipText("");
-        panelEstante.add(lblSegundaImagen);
-        lblSegundaImagen.setBounds(240, 80, 56, 50);
-
-        lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hamburguesa.png"))); // NOI18N
-        lblTerceraImagen.setToolTipText("");
-        panelEstante.add(lblTerceraImagen);
-        lblTerceraImagen.setBounds(60, 160, 58, 50);
-
-        lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carne.png"))); // NOI18N
         lblPrimeraImagen.setToolTipText("");
         panelEstante.add(lblPrimeraImagen);
-        lblPrimeraImagen.setBounds(60, 76, 58, 50);
+        lblPrimeraImagen.setBounds(50, 80, 90, 50);
+
+        lblSegundaImagen.setToolTipText("");
+        panelEstante.add(lblSegundaImagen);
+        lblSegundaImagen.setBounds(230, 80, 70, 50);
+
+        lblTerceraImagen.setToolTipText("");
+        panelEstante.add(lblTerceraImagen);
+        lblTerceraImagen.setBounds(50, 160, 90, 50);
 
         lblImageEstante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/estante.jpg"))); // NOI18N
         panelEstante.add(lblImageEstante);
