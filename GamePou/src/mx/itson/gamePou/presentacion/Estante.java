@@ -5,8 +5,10 @@
  */
 package mx.itson.gamePou.presentacion;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
@@ -23,13 +25,38 @@ public class Estante extends javax.swing.JFrame {
      */
     public Estante() {
         initComponents();
-        mostrarProductos();
     }
     
     PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productos = persistencia.obtenerProductos();
+    List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();
     
+    List<Producto> productos = new ArrayList();
+    
+    public void obtenerProductosSeccion(Seccion seccion) {
+        if (seccion == Seccion.COCINA) {
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
+                    productos.add(productosbd.get(i));
+                }
+            }
+            mostrarProductos();
+        }else if (seccion == Seccion.CUARTO){
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
+                    productos.add(productosbd.get(i));
+                }
+            }
+            mostrarProductos();
+        }else if (seccion == Seccion.LABORATORIO){
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
+                    productos.add(productosbd.get(i));
+                }
+            }
+            mostrarProductos();
+        }
+    }
     
     public void mostrarProductos(){
         

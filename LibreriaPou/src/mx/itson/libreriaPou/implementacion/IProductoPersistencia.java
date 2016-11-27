@@ -31,7 +31,7 @@ public class IProductoPersistencia implements PersistenciaProducto {
     * @param producto 
     */
     @Override
-   public void updateProducto(Producto producto){
+   public void actualizarProducto(Producto producto){
        try {
            String query = "UPDATE producto SET cantidad =" + producto.getCantidad() +" WHERE producto.id = '"+ producto.getId() +"';";
                     

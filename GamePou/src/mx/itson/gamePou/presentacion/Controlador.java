@@ -18,8 +18,7 @@ import mx.itson.libreriaPou.entidades.Seccion;
 public class Controlador {
     PersistenciaPou persistencia = new IPouPersistencia();
     Pou pou = persistencia.obtenerPou();
-    
-    public Seccion s = null;
+
     
     public Pou obtenerPou(){
         return pou;
@@ -61,13 +60,14 @@ public class Controlador {
         Tienda tienda = new Tienda();
         tienda.setLocationRelativeTo(null);
         tienda.setVisible(true);
-        tienda.obtenerComidas(seccion);
+        tienda.obtenerProductosSeccion(seccion);
     }
     
-    public void abrirRefrigerador(){
+    public void abrirEstante(Seccion seccion){
         Estante est = new Estante();
         est.setLocationRelativeTo(null);
         est.setVisible(true);
+        est.obtenerProductosSeccion(seccion);
     }
 
 }

@@ -24,5 +24,5 @@ public interface PersistenciaProducto {
     * Metodo que modifica los valores de producto en la base de datos
     * @param producto 
     */
-   public void updateProducto(Producto producto);
+   public void actualizarProducto(Producto producto);
 }

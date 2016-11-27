@@ -48,10 +48,10 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Refrigerador = new javax.swing.JButton();
+        btn_Estante = new javax.swing.JButton();
         lblRefrigerador = new javax.swing.JLabel();
-        btn_Comer = new javax.swing.JButton();
-        btn_Comida = new javax.swing.JButton();
+        btn_Beber = new javax.swing.JButton();
+        btn_Pocion = new javax.swing.JButton();
         lblCantidadComida = new javax.swing.JLabel();
         lblTienda = new javax.swing.JLabel();
         btn_Tienda = new javax.swing.JButton();
@@ -70,12 +70,12 @@ public class VistaLaboratorio extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 51, 255));
 
-        btn_Refrigerador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/nevera.png"))); // NOI18N
-        btn_Refrigerador.setBorderPainted(false);
-        btn_Refrigerador.setContentAreaFilled(false);
-        btn_Refrigerador.addActionListener(new java.awt.event.ActionListener() {
+        btn_Estante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/botiquin.png"))); // NOI18N
+        btn_Estante.setBorderPainted(false);
+        btn_Estante.setContentAreaFilled(false);
+        btn_Estante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RefrigeradorActionPerformed(evt);
+                btn_EstanteActionPerformed(evt);
             }
         });
 
@@ -83,22 +83,22 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         lblRefrigerador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRefrigerador.setText("Botiquin");
 
-        btn_Comer.setBackground(new java.awt.Color(204, 255, 255));
-        btn_Comer.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        btn_Comer.setText("Beber");
-        btn_Comer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_Comer.addActionListener(new java.awt.event.ActionListener() {
+        btn_Beber.setBackground(new java.awt.Color(204, 255, 255));
+        btn_Beber.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        btn_Beber.setText("Beber");
+        btn_Beber.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Beber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ComerActionPerformed(evt);
+                btn_BeberActionPerformed(evt);
             }
         });
 
-        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/pocionFelicidad.png"))); // NOI18N
-        btn_Comida.setBorderPainted(false);
-        btn_Comida.setContentAreaFilled(false);
-        btn_Comida.addActionListener(new java.awt.event.ActionListener() {
+        btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/pocionFelicidad.png"))); // NOI18N
+        btn_Pocion.setBorderPainted(false);
+        btn_Pocion.setContentAreaFilled(false);
+        btn_Pocion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ComidaActionPerformed(evt);
+                btn_PocionActionPerformed(evt);
             }
         });
 
@@ -169,24 +169,6 @@ public class VistaLaboratorio extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Refrigerador))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblCantidadComida)
-                            .addComponent(btn_Comida)
-                            .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblImagePou))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btn_Tienda)
-                            .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Anterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Siguiente))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblImagenMoneda)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -207,8 +189,32 @@ public class VistaLaboratorio extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblImagenFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Estante)
+                            .addComponent(btn_Anterior))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                    .addComponent(lblCantidadComida)
+                                    .addComponent(btn_Pocion)
+                                    .addComponent(btn_Beber, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblImagePou)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                    .addComponent(btn_Tienda)
+                                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_Siguiente)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,30 +244,30 @@ public class VistaLaboratorio extends javax.swing.JPanel {
                     .addComponent(progressFelicidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(117, 117, 117))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblImagePou, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(lblImagePou, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(111, 111, 111)
+                                .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_Comida)
+                        .addComponent(btn_Pocion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCantidadComida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Comer))
+                        .addComponent(btn_Beber))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_Refrigerador)
+                                .addComponent(btn_Estante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblRefrigerador))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -272,17 +278,17 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_RefrigeradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefrigeradorActionPerformed
-        cont.abrirRefrigerador();
-    }//GEN-LAST:event_btn_RefrigeradorActionPerformed
+    private void btn_EstanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EstanteActionPerformed
+        cont.abrirEstante(Seccion.LABORATORIO);
+    }//GEN-LAST:event_btn_EstanteActionPerformed
 
-    private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
+    private void btn_BeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BeberActionPerformed
         consumir();
-    }//GEN-LAST:event_btn_ComerActionPerformed
+    }//GEN-LAST:event_btn_BeberActionPerformed
 
-    private void btn_ComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComidaActionPerformed
+    private void btn_PocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PocionActionPerformed
         cambiarProducto();
-    }//GEN-LAST:event_btn_ComidaActionPerformed
+    }//GEN-LAST:event_btn_PocionActionPerformed
 
     private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
         cont.abrirTienda(Seccion.LABORATORIO);
@@ -298,6 +304,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
  
     
     public void obtenerPociones(){
+        productos.clear();
         for (int i = 0; i < productosbd.size(); i++) {
             if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
                 productos.add(productosbd.get(i));
@@ -306,29 +313,39 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         mostrarProducto();
     }
     
-   public void mostrarValoresPou(){
+   
+    
+    /**
+     * Metodo utilizado para mostrar el producto dentro de la vista
+     */
+    public void mostrarProducto(){
+        if (posicionProducto <= 0) {
+            lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
+        }else {
+            lblCantidadComida.setText(productos.get(posicionProducto-1).getNombre() + " X " + productos.get(posicionProducto-1).getCantidad());
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto-1).getNombre()+".png")));
+        } 
+    } 
+    
+    
+    public void mostrarValoresPou() {
         progressHambre.setValue(pou.getValorHambre());
         progressSalud.setValue(pou.getValorSalud());
         progressEnergia.setValue(pou.getValorEnergia());
         progressFelicidad.setValue(pou.getValorFelicidad());
         lblImagenMoneda.setText("x" + pou.getDinero());
     }
-    
-    public void mostrarProducto(){
-       lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
-       btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-    }
-  
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
             posicionProducto = 0;
         }else{
             lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
             
             posicionProducto++;
         }  
@@ -336,21 +353,21 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     
     public void consumir(){
         if (posicionProducto > 6 || posicionProducto == 0) {
-            
             negocio.Consumir(productos.get(0), pou);
             mostrarValoresPou();
+            obtenerPociones();
         }else {
-            
             negocio.Consumir(productos.get(posicionProducto-1), pou);
             mostrarValoresPou();
+            obtenerPociones();
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Anterior;
-    private javax.swing.JButton btn_Comer;
-    private javax.swing.JButton btn_Comida;
-    private javax.swing.JButton btn_Refrigerador;
+    private javax.swing.JButton btn_Beber;
+    private javax.swing.JButton btn_Estante;
+    private javax.swing.JButton btn_Pocion;
     private javax.swing.JButton btn_Siguiente;
     private javax.swing.JButton btn_Tienda;
     private javax.swing.JLabel lblCantidadComida;

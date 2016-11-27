@@ -40,7 +40,7 @@ public class Tienda extends javax.swing.JFrame {
     
     List<Producto> productos = new ArrayList();
   
-    public void obtenerComidas(Seccion seccion) {
+    public void obtenerProductosSeccion(Seccion seccion) {
         if (seccion == Seccion.COCINA) {
             for (int i = 0; i < productosbd.size(); i++) {
                 if (productosbd.get(i).getSeccion() == Seccion.COCINA) {

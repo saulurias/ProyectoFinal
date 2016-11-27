@@ -25,7 +25,7 @@ public class IProductoNegocio implements NegocioProducto{
     public void Consumir(Producto producto, Pou pou){
         
         if (producto.getCantidad() <= 0) {
-            JOptionPane.showMessageDialog(null, "No hay suficiente comida");
+            JOptionPane.showMessageDialog(null, "No hay suficiente producto");
         }else {
             /**
          * Se obtienen los valores que el producto tiene
@@ -160,7 +160,7 @@ public class IProductoNegocio implements NegocioProducto{
     public void actualizarBD(Pou pou, Producto producto){
             //Se editan los valores de Producto dentro de la base de datos
             PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
-            persistenciaProducto.updateProducto(producto);
+            persistenciaProducto.actualizarProducto(producto);
             
             //Se editan los valores de Pou dentro de la base de datos
             PersistenciaPou persistenciaPou = new IPouPersistencia();
