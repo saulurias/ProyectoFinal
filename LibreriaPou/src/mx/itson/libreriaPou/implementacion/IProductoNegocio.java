@@ -77,14 +77,14 @@ public class IProductoNegocio implements NegocioProducto{
         
         
         /**
-         * Se asigna el energia de salud a Pou
+         * Se asigna el energia a Pou
          */
         if (energiaPou >= 100) {
             pou.setValorEnergia(100);
         }else if (saludPou <= 0) {
             pou.setValorEnergia(0);
         }else {
-            pou.setValorEnergia(saludPou);
+            pou.setValorEnergia(energiaPou);
         }
         
         /**

@@ -72,7 +72,7 @@
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="lblCantidadComida" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_Comida" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_Comer" alignment="2" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="btn_Vestir" alignment="2" min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
@@ -143,7 +143,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblCantidadComida" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_Comer" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Vestir" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ComidaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_Comer">
+    <Component class="javax.swing.JButton" name="btn_Vestir">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
@@ -201,7 +201,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ComerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VestirActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCantidadComida">

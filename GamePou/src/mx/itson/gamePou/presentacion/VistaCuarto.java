@@ -69,7 +69,7 @@ public class VistaCuarto extends javax.swing.JPanel {
         lblRefrigerador = new javax.swing.JLabel();
         btn_Refrigerador = new javax.swing.JButton();
         btn_Comida = new javax.swing.JButton();
-        btn_Comer = new javax.swing.JButton();
+        btn_Vestir = new javax.swing.JButton();
         lblCantidadComida = new javax.swing.JLabel();
         btn_Siguiente = new javax.swing.JButton();
         lblImagePou = new javax.swing.JLabel();
@@ -108,13 +108,13 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        btn_Comer.setBackground(new java.awt.Color(204, 255, 255));
-        btn_Comer.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        btn_Comer.setText("Vestir");
-        btn_Comer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_Comer.addActionListener(new java.awt.event.ActionListener() {
+        btn_Vestir.setBackground(new java.awt.Color(204, 255, 255));
+        btn_Vestir.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        btn_Vestir.setText("Vestir");
+        btn_Vestir.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Vestir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ComerActionPerformed(evt);
+                btn_VestirActionPerformed(evt);
             }
         });
 
@@ -209,7 +209,7 @@ public class VistaCuarto extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblCantidadComida)
                     .addComponent(btn_Comida)
-                    .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Vestir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -262,7 +262,7 @@ public class VistaCuarto extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCantidadComida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Comer)))
+                        .addComponent(btn_Vestir)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -273,11 +273,13 @@ public class VistaCuarto extends javax.swing.JPanel {
 
     private void btn_ComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComidaActionPerformed
         cambiarProducto();
+        btn_Vestir.setEnabled(true);
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
-    private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
+    private void btn_VestirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VestirActionPerformed
         consumir();
-    }//GEN-LAST:event_btn_ComerActionPerformed
+        btn_Vestir.setEnabled(false);
+    }//GEN-LAST:event_btn_VestirActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
         cont.iniciarLaboratorio();
@@ -301,7 +303,7 @@ public class VistaCuarto extends javax.swing.JPanel {
     * Metodo utilizado para mostrar la imagen de Pou
     */
     public void mostrarProducto(){
-       lblCantidadComida.setText(productos.get(0).getNombre() + " X ");
+       lblCantidadComida.setText(productos.get(0).getNombre());
        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
     }
   
@@ -329,12 +331,10 @@ public class VistaCuarto extends javax.swing.JPanel {
     public void consumir(){
       if (posicionProducto > 6 || posicionProducto == 0) {
             lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-            productos.get(0).setCantidad(productos.get(0).getCantidad()+1);
             negocio.Consumir(productos.get(0), pou);
             mostrarValoresPou();
         }else {
             lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto-1).getNombre()+".png")));
-            productos.get(0).setCantidad(productos.get(posicionProducto-1).getCantidad()+1);
             negocio.Consumir(productos.get(posicionProducto-1), pou);
             mostrarValoresPou();
         }
@@ -342,10 +342,10 @@ public class VistaCuarto extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Anterior;
-    private javax.swing.JButton btn_Comer;
     private javax.swing.JButton btn_Comida;
     private javax.swing.JButton btn_Refrigerador;
     private javax.swing.JButton btn_Siguiente;
+    private javax.swing.JButton btn_Vestir;
     private javax.swing.JLabel lblCantidadComida;
     private javax.swing.JLabel lblImagePou;
     private javax.swing.JLabel lblImagenEnergia;

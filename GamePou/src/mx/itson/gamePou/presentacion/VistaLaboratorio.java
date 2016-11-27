@@ -351,14 +351,11 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
-        
             btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
             posicionProducto = 0;
         }else{
             lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
-        
             btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
-            
             posicionProducto++;
         }  
     }
@@ -370,6 +367,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         if (posicionProducto > 6 || posicionProducto == 0) {
             negocio.Consumir(productos.get(0), pou);
             mostrarValoresPou();
+            System.out.println("Se consumio una pocion de :" + productos.get(0).getNombre());
             obtenerPociones();
         }else {
             negocio.Consumir(productos.get(posicionProducto-1), pou);
