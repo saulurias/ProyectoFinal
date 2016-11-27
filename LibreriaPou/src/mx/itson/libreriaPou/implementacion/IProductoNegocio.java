@@ -8,24 +8,27 @@ package mx.itson.libreriaPou.implementacion;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
+import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 
 /**
- *
+ * Implementacion que posee los metodos del negocio de Producto
  * @author SaulUrias
  */
 public class IProductoNegocio implements NegocioProducto{
     
     PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
-    
+    PersistenciaPou persistenciaPou = new IPouPersistencia();
     
     /**
      * Metodo utilizado para Alimentar a PouLa cantidad de producto debe ser mayor a 0
      * @param producto
      * @param pou 
      */
+    @Override
     public void Consumir(Producto producto, Pou pou){
         
         if (producto.getCantidad() <= 0) {
@@ -96,20 +99,24 @@ public class IProductoNegocio implements NegocioProducto{
         }
         
         
-        //Restar el producto consumido
-        int comidaRestante = producto.getCantidad()-1;
+        //Restar el producto consumido en caso de no estar en la Seccion Cuarto
+            int comidaRestante = producto.getCantidad() - 1;
+            if (producto.getSeccion() != Seccion.CUARTO) {
+                if (comidaRestante <= 0) {
+
+                    producto.setCantidad(0);
+                } else {
+                    producto.setCantidad(comidaRestante);
+                }
+            }
         
-        if (comidaRestante <= 0) {
-            producto.setCantidad(0);
-        }else {
-            producto.setCantidad(comidaRestante);
-        }
         
         /**
          * Se llama el metodo que actualiza la base de datos
          */
-            persistenciaProducto.actualizarBD(pou, producto);
-        
+            persistenciaPou.actualizarPou(pou);
+            persistenciaProducto.actualizarProducto(producto);
+      
        }
     }
     
@@ -150,9 +157,10 @@ public class IProductoNegocio implements NegocioProducto{
             
             
             /**
-            * Se llama el metodo que actualiza la base de datos
-            */
-            persistenciaProducto.actualizarBD(pou, producto);
+             * Se llama el metodo que actualiza la base de datos
+             */
+            persistenciaPou.actualizarPou(pou);
+            persistenciaProducto.actualizarProducto(producto);
         }  
     }
     

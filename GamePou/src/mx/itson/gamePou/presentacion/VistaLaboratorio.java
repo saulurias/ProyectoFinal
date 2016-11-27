@@ -14,8 +14,10 @@ import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+
+
 /**
- *
+ * Panel utilizado para mostrar la vista de la seccion Laboratorio
  * @author SaulUrias
  */
 public class VistaLaboratorio extends javax.swing.JPanel {
@@ -31,6 +33,9 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         this.setVisible(true);
     }
     
+    /**
+     * Variables a utilizar durante la ejecucion de la vista
+     */
     Controlador cont = new Controlador();
     Pou pou = cont.obtenerPou();
     int posicionProducto = 1;
@@ -329,6 +334,9 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     } 
     
     
+    /**
+     * Metodo a utilizar para mostrar los valores de Pou dentro de la vista
+     */
     public void mostrarValoresPou() {
         progressHambre.setValue(pou.getValorHambre());
         progressSalud.setValue(pou.getValorSalud());
@@ -336,6 +344,10 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         progressFelicidad.setValue(pou.getValorFelicidad());
         lblImagenMoneda.setText("x" + pou.getDinero());
     }
+    
+    /**
+     * Metodo a utilizar para cambiar el producto que puede ser consumido por Pou dentro de la vista
+     */
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
@@ -351,6 +363,9 @@ public class VistaLaboratorio extends javax.swing.JPanel {
         }  
     }
     
+    /**
+     * Metodo utilizado para consumir el producto dentro de la vista
+     */
     public void consumir(){
         if (posicionProducto > 6 || posicionProducto == 0) {
             negocio.Consumir(productos.get(0), pou);

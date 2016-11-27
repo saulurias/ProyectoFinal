@@ -15,7 +15,7 @@ import mx.itson.libreriaPou.interfaz.NegocioProducto;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
- *
+ * Frame utilizado para mostrar los productos que contiene el jugador en una Seccion
  * @author soygo
  */
 public class Estante extends javax.swing.JFrame {
@@ -27,12 +27,18 @@ public class Estante extends javax.swing.JFrame {
         initComponents();
     }
     
+    /**
+     * Variables utilizadas en la ejecución del Estante
+     */
     PersistenciaProducto persistencia = new IProductoPersistencia();
     List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();
-    
     List<Producto> productos = new ArrayList();
     
+    /**
+     * Metodo utilizado para obtener los productos dependiendo la seccion
+     * @param seccion 
+     */
     public void obtenerProductosSeccion(Seccion seccion) {
         if (seccion == Seccion.COCINA) {
             for (int i = 0; i < productosbd.size(); i++) {
@@ -58,6 +64,9 @@ public class Estante extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Metodo utilizado para mostrar los productos dentro del Estante
+     */
     public void mostrarProductos(){
         
         lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));

@@ -7,6 +7,7 @@ package mx.itson.libreriaPou.entidades;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 /**
  * Entidad que posee el metodo de conexión hacia la base de datos
@@ -25,7 +26,7 @@ public class Conexion {
              conn = DriverManager.getConnection(url+dbName,user,password);
              System.out.println("Conectado a " + dbName);
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Se genero un error al momento de hacer la conección con la base de datos");
         }
     }
     

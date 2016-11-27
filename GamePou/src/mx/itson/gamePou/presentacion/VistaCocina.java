@@ -17,7 +17,7 @@ import mx.itson.libreriaPou.interfaz.NegocioProducto;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
- *
+ * Panel utilizado para mostrar la vista de la seccion Cocina
  * @author SaulUrias
  */
 public class VistaCocina extends javax.swing.JPanel {
@@ -32,6 +32,10 @@ public class VistaCocina extends javax.swing.JPanel {
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
+    
+    /**
+     * Variables a utilizar durante la ejecución del panel vistaCocina
+     */
     Controlador cont = new Controlador();
     Pou pou = cont.obtenerPou();
     int posicionProducto = 1;
@@ -359,7 +363,7 @@ public class VistaCocina extends javax.swing.JPanel {
     }
     
     /**
-     * Metodo utilizado para cambiar el producto dentro de la vista
+     * Metodo utilizado para consumir el producto dentro de la vista
      */
     public void consumir(){
         if (posicionProducto > 6 || posicionProducto == 0) {

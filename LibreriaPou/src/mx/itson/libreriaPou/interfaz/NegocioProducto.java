@@ -9,7 +9,7 @@ import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 
 /**
- *
+ *  Interface que posee los metodos del negocio de Producto
  * @author SaulUrias
  */
 public interface NegocioProducto {

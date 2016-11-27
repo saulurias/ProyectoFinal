@@ -12,7 +12,7 @@ import static mx.itson.gamePou.presentacion.Principal.panelPrincipal;
 import mx.itson.libreriaPou.entidades.Seccion;
 
 /**
- *
+ * Entidad utilizada para controlar los paneles y frame utilizados en el proyecto GamePou
  * @author soygo
  */
 public class Controlador {
@@ -28,6 +28,9 @@ public class Controlador {
     /****************
      PANELES
      ****************/
+    /**
+     * Metodo utilizado para abrir la seccion Laboratorio
+     */
     public void iniciarLaboratorio(){
         VistaLaboratorio ventana = new VistaLaboratorio();
         panelPrincipal.removeAll();
@@ -36,7 +39,9 @@ public class Controlador {
         panelPrincipal.repaint();
     }
     
-    
+    /**
+     * Metodo utilizado para abrir la seccion Cocina
+     */
     public void iniciarCocina() {
         VistaCocina ventana = new VistaCocina();
         panelPrincipal.removeAll();
@@ -45,6 +50,9 @@ public class Controlador {
         panelPrincipal.repaint();
     }
     
+    /**
+     * Metodo utilizado para abrir la seccion Cuarto
+     */
     public void iniciarCuarto(){
         VistaCuarto ventana = new VistaCuarto();
         panelPrincipal.removeAll();
@@ -56,6 +64,10 @@ public class Controlador {
     /****************
      FRAMES
      ****************/
+    /**
+     * Metodo utilizado para abrir la Tienda dependiendo de la Seccion
+     * @param seccion 
+     */
     public void abrirTienda(Seccion seccion){
         Tienda tienda = new Tienda();
         tienda.setLocationRelativeTo(null);
@@ -63,6 +75,10 @@ public class Controlador {
         tienda.obtenerProductosSeccion(seccion);
     }
     
+    /**
+     * Metodo utilizado para abrir el estante dependiendo de la Seccion
+     * @param seccion 
+     */
     public void abrirEstante(Seccion seccion){
         Estante est = new Estante();
         est.setLocationRelativeTo(null);

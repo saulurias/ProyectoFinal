@@ -10,15 +10,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Conexion;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 
 /**
- *
+ *  Implementacion que posee los metodos de Pou
  * @author SaulUrias
  */
 public class IPouPersistencia implements PersistenciaPou{
@@ -28,7 +26,8 @@ public class IPouPersistencia implements PersistenciaPou{
      * Metodo que modifica los valores de pou despues en la base de datos
      * @param pou 
      */
-   public void updatePou(Pou pou){
+    @Override
+   public void actualizarPou(Pou pou){
        try {
            String query = "UPDATE pou SET dinero = '"+pou.getDinero()+"',"
                + "valorHambre = '"+pou.getValorHambre()+"',"
@@ -40,7 +39,6 @@ public class IPouPersistencia implements PersistenciaPou{
            pst.execute();
        } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al momento de cambiar los valores de Pou");
-           ex.printStackTrace();
        }
    }
     
@@ -48,29 +46,28 @@ public class IPouPersistencia implements PersistenciaPou{
     * Metodo utilizado para obtener el Pou que se tiene guardado en la BD
     * @return 
     */
+    @Override
    public Pou obtenerPou(){
       Pou pou = null;
  
        try {
             String query = "SELECT * FROM pou;";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            
-            while (rs.next()) {               
-               pou = new Pou(rs.getInt("dinero"),
-                       rs.getInt("valorHambre"),
-                       rs.getInt("valorSalud"),
-                       rs.getInt("valorEnergia"),
-                       rs.getInt("valorFelicidad"));
-           }
-            
-             st.close();
+          try (Statement st = conn.createStatement()) {
+              ResultSet rs = st.executeQuery(query);
+              
+              while (rs.next()) {
+                  pou = new Pou(rs.getInt("dinero"),
+                          rs.getInt("valorHambre"),
+                          rs.getInt("valorSalud"),
+                          rs.getInt("valorEnergia"),
+                          rs.getInt("valorFelicidad"));
+              }
+          }
              
             return pou;
             
        } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al momento de obtener los valores de Pou");
-           ex.printStackTrace();
        }
        return pou; 
    }

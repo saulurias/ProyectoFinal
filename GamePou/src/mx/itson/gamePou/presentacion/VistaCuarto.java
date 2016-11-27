@@ -17,7 +17,7 @@ import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 
 /**
- *
+ * Panel utilizado para mostrar la vista de la seccion Cuarto
  * @author SaulUrias
  */
 public class VistaCuarto extends javax.swing.JPanel {
@@ -33,6 +33,9 @@ public class VistaCuarto extends javax.swing.JPanel {
         this.setVisible(true);
     }
     
+    /**
+     * Variables a utilizar durante la ejecucion del panel VistaCuarto
+     */
     Controlador cont = new Controlador();
     Pou pou = cont.obtenerPou();;
     int posicionProducto = 1;
@@ -42,6 +45,9 @@ public class VistaCuarto extends javax.swing.JPanel {
     NegocioProducto negocio = new IProductoNegocio();
     List<Producto> productos = new ArrayList();
     
+    /**
+     * Metodo utilizado para obtener los trajes disponibles que el usuario puede utilizar
+     */
     public void obtenerTrajes(){
         for (int i = 0; i < productosbd.size(); i++) {
             if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
@@ -291,11 +297,17 @@ public class VistaCuarto extends javax.swing.JPanel {
         lblImagenMoneda.setText("x" + pou.getDinero() );
     }
     
+   /**
+    * Metodo utilizado para mostrar la imagen de Pou
+    */
     public void mostrarProducto(){
        lblCantidadComida.setText(productos.get(0).getNombre() + " X ");
        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
     }
   
+    /**
+     * Metodo utilizado para cambiar el traje que puede ser utilizado por Pou
+     */
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre());
@@ -311,6 +323,9 @@ public class VistaCuarto extends javax.swing.JPanel {
         }  
     }
     
+    /**
+     * Metodo utilizado para consumir el producto dentro de la vista
+     */
     public void consumir(){
       if (posicionProducto > 6 || posicionProducto == 0) {
             lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));

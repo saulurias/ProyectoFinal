@@ -6,7 +6,7 @@
 package mx.itson.libreriaPou.entidades;
 
 /**
- *
+ *  Enumerador que define la seccion de Producto
  * @author SaulUrias
  */
 public enum Seccion {
@@ -14,7 +14,7 @@ public enum Seccion {
     CUARTO(2),
     LABORATORIO(3);
     
-    private int valor;
+    private final int valor;
     
     Seccion(int valor){
         this.valor = valor;

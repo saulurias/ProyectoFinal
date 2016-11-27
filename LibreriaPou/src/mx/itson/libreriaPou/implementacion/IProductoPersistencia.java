@@ -21,7 +21,7 @@ import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
- *
+ * Implementacion que posee los metodos de la persistencia de Producto 
  * @author SaulUrias
  */
 public class IProductoPersistencia implements PersistenciaProducto {
@@ -99,6 +99,7 @@ public class IProductoPersistencia implements PersistenciaProducto {
             
             //Se editan los valores de Pou dentro de la base de datos
             PersistenciaPou persistenciaPou = new IPouPersistencia();
-            persistenciaPou.updatePou(pou);
+            persistenciaPou.actualizarPou(pou);
     }
+    
 }

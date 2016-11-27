@@ -17,7 +17,7 @@ import mx.itson.libreriaPou.interfaz.NegocioProducto;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
- *
+ * Frame utilizado para mostrar los produtos que el usuario puede comprar dependiendo la seccion
  * @author soygo
  */
 public class Tienda extends javax.swing.JFrame {
@@ -30,16 +30,23 @@ public class Tienda extends javax.swing.JFrame {
         this.setSize(502, 335);  
     }
     
+    /**
+     * Variables utilizadas durante la ejecucion de la Tienda
+     */
     Controlador cont = new Controlador();
     PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();;
+    
     Pou pou = cont.obtenerPou();
     
-    
-    
+    List<Producto> productosbd = persistencia.obtenerProductos();
     List<Producto> productos = new ArrayList();
+    
   
+    /**
+     * Metodo utilizado para obtener los productos dependiendo la seccion
+     * @param seccion 
+     */
     public void obtenerProductosSeccion(Seccion seccion) {
         if (seccion == Seccion.COCINA) {
             for (int i = 0; i < productosbd.size(); i++) {
@@ -65,6 +72,9 @@ public class Tienda extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Metodo utilizado para mostrar los productos dentro de la Tienda
+     */
     public void mostrarProductos() {
         if (productos.size() == 0) {
             JOptionPane.showMessageDialog(null, "No Hay productos para mostrar");
