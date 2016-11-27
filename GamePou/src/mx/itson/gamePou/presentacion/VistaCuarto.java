@@ -5,9 +5,11 @@
  */
 package mx.itson.gamePou.presentacion;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
@@ -26,7 +28,7 @@ public class VistaCuarto extends javax.swing.JPanel {
     public VistaCuarto() {
         initComponents();
         mostrarValoresPou();
-        mostrarProducto();
+        obtenerTrajes();
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
@@ -36,8 +38,18 @@ public class VistaCuarto extends javax.swing.JPanel {
     int posicionProducto = 1;
     
     PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productos = persistencia.obtenerProductos();
+    List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();
+    List<Producto> productos = new ArrayList();
+    
+    public void obtenerTrajes(){
+        for (int i = 0; i < productosbd.size(); i++) {
+            if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
+                productos.add(productosbd.get(i));
+            }
+        }
+        mostrarProducto();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +64,7 @@ public class VistaCuarto extends javax.swing.JPanel {
         btn_Refrigerador = new javax.swing.JButton();
         btn_Comida = new javax.swing.JButton();
         btn_Comer = new javax.swing.JButton();
-        lblTienda = new javax.swing.JLabel();
         lblCantidadComida = new javax.swing.JLabel();
-        btn_Tienda = new javax.swing.JButton();
         btn_Siguiente = new javax.swing.JButton();
         lblImagePou = new javax.swing.JLabel();
         btn_Anterior = new javax.swing.JButton();
@@ -83,7 +93,7 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/hamburguesa.png"))); // NOI18N
+        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/pouvon.png"))); // NOI18N
         btn_Comida.setBorderPainted(false);
         btn_Comida.setContentAreaFilled(false);
         btn_Comida.addActionListener(new java.awt.event.ActionListener() {
@@ -102,22 +112,9 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        lblTienda.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        lblTienda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTienda.setText("Tienda");
-
         lblCantidadComida.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
         lblCantidadComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCantidadComida.setText("hamburguesa X 5");
-
-        btn_Tienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/tienda.png"))); // NOI18N
-        btn_Tienda.setBorderPainted(false);
-        btn_Tienda.setContentAreaFilled(false);
-        btn_Tienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_TiendaActionPerformed(evt);
-            }
-        });
 
         btn_Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/right_arrow.png"))); // NOI18N
         btn_Siguiente.setBorderPainted(false);
@@ -170,45 +167,47 @@ public class VistaCuarto extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Refrigerador))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblCantidadComida)
-                            .addComponent(btn_Comida)
-                            .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblImagePou))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btn_Tienda)
-                            .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_Anterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Siguiente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblImagenMoneda)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(progressHambre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblImagenHambrePou))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_Anterior)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_Siguiente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblImagenMoneda)
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(progressHambre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblImagenHambrePou))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(progressEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(lblImagenSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(lblImagenEnergia)))
                                 .addGap(18, 18, 18)
-                                .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(progressEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(lblImagenSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(lblImagenEnergia)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblImagenFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblImagenFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 28, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(lblImagePou))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Refrigerador)
+                    .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblCantidadComida)
+                    .addComponent(btn_Comida)
+                    .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,32 +242,27 @@ public class VistaCuarto extends javax.swing.JPanel {
                         .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btn_Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(117, 117, 117))
+                                .addGap(111, 111, 111))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblImagePou, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(30, 30, 30)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_Refrigerador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblRefrigerador)
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_Comida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCantidadComida)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Comer))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_Refrigerador)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblRefrigerador))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_Tienda)
-                                .addGap(4, 4, 4)
-                                .addComponent(lblTienda)))
-                        .addContainerGap())))
+                        .addComponent(btn_Comer)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,10 +277,6 @@ public class VistaCuarto extends javax.swing.JPanel {
     private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
         consumir();
     }//GEN-LAST:event_btn_ComerActionPerformed
-
-    private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
-        cont.abrirTienda();
-    }//GEN-LAST:event_btn_TiendaActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
         cont.iniciarLaboratorio();
@@ -307,18 +297,18 @@ public class VistaCuarto extends javax.swing.JPanel {
     }
     
     public void mostrarProducto(){
-       lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+       lblCantidadComida.setText(productos.get(0).getNombre() + " X ");
        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
     }
   
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
-            lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+            lblCantidadComida.setText(productos.get(0).getNombre());
         
             btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
             posicionProducto = 0;
         }else{
-            lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
+            lblCantidadComida.setText(productos.get(posicionProducto).getNombre());
         
             btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
             
@@ -327,12 +317,14 @@ public class VistaCuarto extends javax.swing.JPanel {
     }
     
     public void consumir(){
-        if (posicionProducto > 6 || posicionProducto == 0) {
-            
+      if (posicionProducto > 6 || posicionProducto == 0) {
+            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
+            productos.get(0).setCantidad(productos.get(0).getCantidad()+1);
             negocio.Consumir(productos.get(0), pou);
             mostrarValoresPou();
         }else {
-            
+            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto-1).getNombre()+".png")));
+            productos.get(0).setCantidad(productos.get(posicionProducto-1).getCantidad()+1);
             negocio.Consumir(productos.get(posicionProducto-1), pou);
             mostrarValoresPou();
         }
@@ -344,7 +336,6 @@ public class VistaCuarto extends javax.swing.JPanel {
     private javax.swing.JButton btn_Comida;
     private javax.swing.JButton btn_Refrigerador;
     private javax.swing.JButton btn_Siguiente;
-    private javax.swing.JButton btn_Tienda;
     private javax.swing.JLabel lblCantidadComida;
     private javax.swing.JLabel lblImagePou;
     private javax.swing.JLabel lblImagenEnergia;
@@ -353,7 +344,6 @@ public class VistaCuarto extends javax.swing.JPanel {
     private javax.swing.JLabel lblImagenMoneda;
     private javax.swing.JLabel lblImagenSalud;
     private javax.swing.JLabel lblRefrigerador;
-    private javax.swing.JLabel lblTienda;
     private javax.swing.JProgressBar progressEnergia;
     private javax.swing.JProgressBar progressFelicidad;
     private javax.swing.JProgressBar progressHambre;

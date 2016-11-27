@@ -16,12 +16,12 @@ import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
  *
  * @author soygo
  */
-public class EstanteRefrigerador extends javax.swing.JFrame {
+public class Estante extends javax.swing.JFrame {
 
     /**
      * Creates new form EstanteRefrigerador
      */
-    public EstanteRefrigerador() {
+    public Estante() {
         initComponents();
         mostrarProductos();
     }

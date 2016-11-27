@@ -9,6 +9,7 @@ import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.implementacion.IPouPersistencia;
 import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 import static mx.itson.gamePou.presentacion.Principal.panelPrincipal;
+import mx.itson.libreriaPou.entidades.Seccion;
 
 /**
  *
@@ -18,9 +19,12 @@ public class Controlador {
     PersistenciaPou persistencia = new IPouPersistencia();
     Pou pou = persistencia.obtenerPou();
     
+    public Seccion s = null;
+    
     public Pou obtenerPou(){
         return pou;
     }
+
     
     /****************
      PANELES
@@ -53,17 +57,17 @@ public class Controlador {
     /****************
      FRAMES
      ****************/
-    public void abrirTienda(){
+    public void abrirTienda(Seccion seccion){
         Tienda tienda = new Tienda();
         tienda.setLocationRelativeTo(null);
-        tienda.setSize(500, 500);
         tienda.setVisible(true);
+        tienda.obtenerComidas(seccion);
     }
     
     public void abrirRefrigerador(){
-        EstanteRefrigerador est = new EstanteRefrigerador();
+        Estante est = new Estante();
         est.setLocationRelativeTo(null);
-        est.setSize(369, 297);
         est.setVisible(true);
     }
+
 }

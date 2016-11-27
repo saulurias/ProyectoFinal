@@ -7,6 +7,7 @@ package mx.itson.gamePou.presentacion;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 import mx.itson.libreriaPou.entidades.Seccion;
@@ -26,49 +27,70 @@ public class Tienda extends javax.swing.JFrame {
      */
     public Tienda() {
         initComponents();
-        this.setSize(502, 335);
-        obtenerComidas();
-        mostrarProductos();
-        
+        this.setSize(502, 335);  
     }
+    
     Controlador cont = new Controlador();
     PersistenciaProducto persistencia = new IProductoPersistencia();
     List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();;
     Pou pou = cont.obtenerPou();
     
-    List<Producto> productos = new ArrayList();
     
-    public void obtenerComidas(){
-        for (int i = 0; i < productosbd.size(); i++) {
-            if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
-                productos.add(productosbd.get(i));
+    
+    List<Producto> productos = new ArrayList();
+  
+    public void obtenerComidas(Seccion seccion) {
+        if (seccion == Seccion.COCINA) {
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
+                    productos.add(productosbd.get(i));
+                }
             }
+            mostrarProductos();
+        }else if (seccion == Seccion.CUARTO){
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
+                    productos.add(productosbd.get(i));
+                }
+            }
+            mostrarProductos();
+        }else if (seccion == Seccion.LABORATORIO){
+            for (int i = 0; i < productosbd.size(); i++) {
+                if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
+                    productos.add(productosbd.get(i));
+                }
+            }
+            mostrarProductos();
         }
     }
     
-    public void mostrarProductos(){
-        
-        lblImagenMoneda.setText("x" + pou.getDinero());
-        
-        btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-        lblPrimera.setText(productos.get(0).getNombre() + " $" + productos.get(0).getCosto());
-        
-        btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(1).getNombre()+".png")));
-        lblSegunda.setText(productos.get(1).getNombre() + " $" + productos.get(1).getCosto());
-        
-        btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(2).getNombre()+".png")));
-        lblTercera.setText(productos.get(2).getNombre() + " $" + productos.get(2).getCosto());
-        
-        btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(3).getNombre()+".png")));
-        lblCuarto.setText(productos.get(3).getNombre() + " $" + productos.get(3).getCosto());
-        
-        btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(4).getNombre()+".png")));
-        lblQuinto.setText(productos.get(4).getNombre() + " $" + productos.get(4).getCosto());
-        
-        btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(5).getNombre()+".png")));
-        lblSexto.setText(productos.get(5).getNombre() + " $" + productos.get(5).getCosto());
-        
+    public void mostrarProductos() {
+        if (productos.size() == 0) {
+            JOptionPane.showMessageDialog(null, "No Hay productos para mostrar");
+        } else {
+
+            lblImagenMoneda.setText("x" + pou.getDinero());
+
+            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(0).getNombre() + ".png")));
+            lblPrimera.setText(productos.get(0).getNombre() + " $" + productos.get(0).getCosto());
+
+            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(1).getNombre() + ".png")));
+            lblSegunda.setText(productos.get(1).getNombre() + " $" + productos.get(1).getCosto());
+
+            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(2).getNombre() + ".png")));
+            lblTercera.setText(productos.get(2).getNombre() + " $" + productos.get(2).getCosto());
+
+            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(3).getNombre() + ".png")));
+            lblCuarto.setText(productos.get(3).getNombre() + " $" + productos.get(3).getCosto());
+
+            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(4).getNombre() + ".png")));
+            lblQuinto.setText(productos.get(4).getNombre() + " $" + productos.get(4).getCosto());
+
+            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(5).getNombre() + ".png")));
+            lblSexto.setText(productos.get(5).getNombre() + " $" + productos.get(5).getCosto());
+        }
+
     }
 
     /**
@@ -204,14 +226,14 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
         panelEstante.add(btn_Cuarto);
-        btn_Cuarto.setBounds(370, 110, 100, 70);
+        btn_Cuarto.setBounds(350, 120, 100, 70);
 
         lblCuarto.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
         lblCuarto.setForeground(new java.awt.Color(0, 0, 255));
         lblCuarto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCuarto.setText("texto 4");
         panelEstante.add(lblCuarto);
-        lblCuarto.setBounds(330, 190, 170, 20);
+        lblCuarto.setBounds(300, 190, 200, 20);
 
         lblImagenMoneda.setFont(new java.awt.Font("Seravek", 1, 24)); // NOI18N
         lblImagenMoneda.setForeground(new java.awt.Color(255, 204, 0));
@@ -227,9 +249,9 @@ public class Tienda extends javax.swing.JFrame {
         lblImageEstante.setBounds(10, 30, 490, 300);
 
         lblClicParaComprar.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
-        lblClicParaComprar.setText("Clic En El Producto Para Comprar");
+        lblClicParaComprar.setText("Clic Sobre El Producto Para Comprar");
         panelEstante.add(lblClicParaComprar);
-        lblClicParaComprar.setBounds(150, 0, 280, 23);
+        lblClicParaComprar.setBounds(150, 0, 310, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

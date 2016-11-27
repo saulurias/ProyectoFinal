@@ -195,7 +195,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Seravek" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Comer"/>
+        <Property name="text" type="java.lang.String" value="Beber"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
             <BevelBorder/>
@@ -209,7 +209,7 @@
     <Component class="javax.swing.JButton" name="btn_Comida">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/mx/itson/gamePouimages/hamburguesa.png"/>
+          <Image iconType="3" name="/mx/itson/gamePouimages/pocionFelicidad.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -224,7 +224,7 @@
           <Font name="Seravek" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="hamburguesa X 5"/>
+        <Property name="text" type="java.lang.String" value="pocionSalud X 5"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTienda">

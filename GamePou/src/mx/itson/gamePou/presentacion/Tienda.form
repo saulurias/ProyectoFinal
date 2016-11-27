@@ -236,7 +236,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="370" y="110" width="100" height="70"/>
+              <AbsoluteConstraints x="350" y="120" width="100" height="70"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -253,7 +253,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="190" width="170" height="20"/>
+              <AbsoluteConstraints x="300" y="190" width="200" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -299,11 +299,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Seravek" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Clic En El Producto Para Comprar"/>
+            <Property name="text" type="java.lang.String" value="Clic Sobre El Producto Para Comprar"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="0" width="280" height="-1"/>
+              <AbsoluteConstraints x="150" y="0" width="310" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

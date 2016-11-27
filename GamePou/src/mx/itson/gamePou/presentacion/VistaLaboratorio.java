@@ -5,9 +5,11 @@
  */
 package mx.itson.gamePou.presentacion;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
@@ -24,7 +26,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     public VistaLaboratorio() {
         initComponents();
         mostrarValoresPou();
-        mostrarProducto();
+        obtenerPociones();
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
@@ -34,9 +36,9 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     int posicionProducto = 1;
     
     PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productos = persistencia.obtenerProductos();
+    List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();
-
+    List<Producto> productos = new ArrayList();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,7 +85,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
 
         btn_Comer.setBackground(new java.awt.Color(204, 255, 255));
         btn_Comer.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        btn_Comer.setText("Comer");
+        btn_Comer.setText("Beber");
         btn_Comer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_Comer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +93,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
             }
         });
 
-        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/hamburguesa.png"))); // NOI18N
+        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/pocionFelicidad.png"))); // NOI18N
         btn_Comida.setBorderPainted(false);
         btn_Comida.setContentAreaFilled(false);
         btn_Comida.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +104,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
 
         lblCantidadComida.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
         lblCantidadComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCantidadComida.setText("hamburguesa X 5");
+        lblCantidadComida.setText("pocionSalud X 5");
 
         lblTienda.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
         lblTienda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,7 +285,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
     private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
-        cont.abrirTienda();
+        cont.abrirTienda(Seccion.LABORATORIO);
     }//GEN-LAST:event_btn_TiendaActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
@@ -295,7 +297,14 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_AnteriorActionPerformed
  
     
-    
+    public void obtenerPociones(){
+        for (int i = 0; i < productosbd.size(); i++) {
+            if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
+                productos.add(productosbd.get(i));
+            }
+        }
+        mostrarProducto();
+    }
     
    public void mostrarValoresPou(){
         progressHambre.setValue(pou.getValorHambre());
@@ -309,10 +318,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
        lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
     }
-    
-    
-    
-    
+  
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());

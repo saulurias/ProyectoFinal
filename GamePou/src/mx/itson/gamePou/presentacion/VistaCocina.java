@@ -8,6 +8,7 @@ package mx.itson.gamePou.presentacion;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
@@ -32,6 +33,8 @@ public class VistaCocina extends javax.swing.JPanel {
     Controlador cont = new Controlador();
     Pou pou = cont.obtenerPou();
     int posicionProducto = 1;
+    
+    
     
     PersistenciaProducto persistencia = new IProductoPersistencia();
     List<Producto> productos = persistencia.obtenerProductos();
@@ -281,7 +284,9 @@ public class VistaCocina extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
     private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
-       cont.abrirTienda();
+        
+        cont.abrirTienda(Seccion.COCINA);
+        
     }//GEN-LAST:event_btn_TiendaActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
@@ -291,7 +296,6 @@ public class VistaCocina extends javax.swing.JPanel {
     private void btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AnteriorActionPerformed
         cont.iniciarLaboratorio();
     }//GEN-LAST:event_btn_AnteriorActionPerformed
-
 
     public void mostrarValoresPou(){
         progressHambre.setValue(pou.getValorHambre());
@@ -304,10 +308,7 @@ public class VistaCocina extends javax.swing.JPanel {
     public void mostrarProducto(){
        lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-    }
-    
-    
-    
+    } 
     
     public void cambiarProducto(){
         if (posicionProducto > productos.size()-1) {
