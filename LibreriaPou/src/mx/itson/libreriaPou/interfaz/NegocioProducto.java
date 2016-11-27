@@ -26,14 +26,6 @@ public interface NegocioProducto {
      * @param pou 
      */
     public void Comprar(Producto producto, Pou pou);
-    
-    
-    /**
-     * Metodo utilizado para actualizar la información dentro de la base de datos
-     * @param pou
-     * @param producto 
-     */
-    public void actualizarBD(Pou pou, Producto producto);
-    
+ 
     
 }

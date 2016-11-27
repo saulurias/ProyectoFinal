@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Conexion;
+import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 import mx.itson.libreriaPou.entidades.Seccion;
+import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
@@ -84,4 +86,19 @@ public class IProductoPersistencia implements PersistenciaProducto {
        
        return productos;
    }
+      
+      /**
+     * Metodo utilizado para actualizar la información dentro de la base de datos
+     * @param pou
+     * @param producto 
+     */
+    public void actualizarBD(Pou pou, Producto producto){
+            //Se editan los valores de Producto dentro de la base de datos
+            PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
+            persistenciaProducto.actualizarProducto(producto);
+            
+            //Se editan los valores de Pou dentro de la base de datos
+            PersistenciaPou persistenciaPou = new IPouPersistencia();
+            persistenciaPou.updatePou(pou);
+    }
 }

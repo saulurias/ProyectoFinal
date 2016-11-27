@@ -9,14 +9,18 @@ import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaPou;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+
 
 /**
  *
  * @author SaulUrias
  */
 public class IProductoNegocio implements NegocioProducto{
+    
+    PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
+    
+    
     /**
      * Metodo utilizado para Alimentar a PouLa cantidad de producto debe ser mayor a 0
      * @param producto
@@ -104,7 +108,7 @@ public class IProductoNegocio implements NegocioProducto{
         /**
          * Se llama el metodo que actualiza la base de datos
          */
-            actualizarBD(pou, producto);
+            persistenciaProducto.actualizarBD(pou, producto);
         
        }
     }
@@ -148,23 +152,10 @@ public class IProductoNegocio implements NegocioProducto{
             /**
             * Se llama el metodo que actualiza la base de datos
             */
-            actualizarBD(pou, producto);
+            persistenciaProducto.actualizarBD(pou, producto);
         }  
     }
     
-    /**
-     * Metodo utilizado para actualizar la información dentro de la base de datos
-     * @param pou
-     * @param producto 
-     */
-    public void actualizarBD(Pou pou, Producto producto){
-            //Se editan los valores de Producto dentro de la base de datos
-            PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
-            persistenciaProducto.actualizarProducto(producto);
-            
-            //Se editan los valores de Pou dentro de la base de datos
-            PersistenciaPou persistenciaPou = new IPouPersistencia();
-            persistenciaPou.updatePou(pou);
-    }
+    
     
 }

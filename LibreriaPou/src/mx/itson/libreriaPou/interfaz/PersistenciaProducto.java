@@ -6,6 +6,7 @@
 package mx.itson.libreriaPou.interfaz;
 
 import java.util.List;
+import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 
 /**
@@ -25,4 +26,11 @@ public interface PersistenciaProducto {
     * @param producto 
     */
    public void actualizarProducto(Producto producto);
+   
+   /**
+     * Metodo utilizado para actualizar la información dentro de la base de datos
+     * @param pou
+     * @param producto 
+     */
+    public void actualizarBD(Pou pou, Producto producto);
 }
