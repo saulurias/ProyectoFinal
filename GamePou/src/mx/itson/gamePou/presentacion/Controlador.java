@@ -25,7 +25,7 @@ public class Controlador {
     /****************
      PANELES
      ****************/
-    public void IniciarLaboratorio(){
+    public void iniciarLaboratorio(){
         VistaLaboratorio ventana = new VistaLaboratorio();
         panelPrincipal.removeAll();
         panelPrincipal.add(ventana);
@@ -33,16 +33,8 @@ public class Controlador {
         panelPrincipal.repaint();
     }
     
-    public void IniciarSalaDeJuego(){
-        VistaSalaDeJuego ventana = new VistaSalaDeJuego();
-        panelPrincipal.removeAll();
-        panelPrincipal.add(ventana);
-        panelPrincipal.revalidate();
-        panelPrincipal.repaint();
-        
-    }
     
-    public void IniciarCocina() {
+    public void iniciarCocina() {
         VistaCocina ventana = new VistaCocina();
         panelPrincipal.removeAll();
         panelPrincipal.add(ventana);
@@ -50,7 +42,7 @@ public class Controlador {
         panelPrincipal.repaint();
     }
     
-    public void IniciarCuarto(){
+    public void iniciarCuarto(){
         VistaCuarto ventana = new VistaCuarto();
         panelPrincipal.removeAll();
         panelPrincipal.add(ventana);
@@ -61,14 +53,14 @@ public class Controlador {
     /****************
      FRAMES
      ****************/
-    public void AbrirTienda(){
+    public void abrirTienda(){
         Tienda tienda = new Tienda();
         tienda.setLocationRelativeTo(null);
         tienda.setSize(500, 500);
         tienda.setVisible(true);
     }
     
-    public void AbrirRefrigerador(){
+    public void abrirRefrigerador(){
         EstanteRefrigerador est = new EstanteRefrigerador();
         est.setLocationRelativeTo(null);
         est.setSize(369, 297);

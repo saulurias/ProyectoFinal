@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Conexion;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
 
 /**
@@ -23,6 +24,7 @@ import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
  */
 public class IProductoPersistencia implements PersistenciaProducto {
     Connection conn = Conexion.conexion();
+    Seccion seccion;
     
     /**
     * Metodo que modifica los valores de producto en la base de datos
@@ -47,15 +49,28 @@ public class IProductoPersistencia implements PersistenciaProducto {
     @Override
       public List<Producto> obtenerProductos(){
        List<Producto> productos = new ArrayList();
-
+       
        try {
+           
             String query = "SELECT * FROM producto;";
            try (Statement st = conn.createStatement()) {
                ResultSet rs = st.executeQuery(query);
                
                while (rs.next()) {
+                   
+                   //Enumerador que define la seccion del producto
+                   seccion = Seccion.valueOf(rs.getString("seccion"));
+                   
                    //Hambre salued energia felicidad
-                   Producto p = new Producto(rs.getInt("id"),rs.getString("nombre"),rs.getInt("costo"),rs.getInt("valorHambre"),rs.getInt("valorSalud"),rs.getInt("valorEnergia"),rs.getInt("valorFelicidad"),rs.getInt("cantidad"));
+                   Producto p = new Producto(rs.getInt("id"),
+                           rs.getString("nombre"),
+                           rs.getInt("costo"),
+                           rs.getInt("valorHambre"),
+                           rs.getInt("valorSalud"),
+                           rs.getInt("valorEnergia"),
+                           rs.getInt("valorFelicidad"),
+                           rs.getInt("cantidad"),
+                           seccion);
                    productos.add(p);
                }
            }

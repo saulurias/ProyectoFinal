@@ -7,12 +7,12 @@ package mx.itson.gamePou.presentacion;
 
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.entidades.Producto;import mx.itson.libreriaPou.implementacion.IProductoNegocio;
+import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
 import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
-;
-import static mx.itson.gamePou.presentacion.Principal.panelPrincipal;
+
 
 /**
  *
@@ -25,8 +25,8 @@ public class VistaCuarto extends javax.swing.JPanel {
      */
     public VistaCuarto() {
         initComponents();
-        MostrarValoresPou();
-        MostrarProducto();
+        mostrarValoresPou();
+        mostrarProducto();
         this.setSize(Principal.panelPrincipal.getSize());
         this.setVisible(true);
     }
@@ -48,12 +48,12 @@ public class VistaCuarto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Refrigerador = new javax.swing.JButton();
         lblRefrigerador = new javax.swing.JLabel();
-        btn_Comer = new javax.swing.JButton();
+        btn_Refrigerador = new javax.swing.JButton();
         btn_Comida = new javax.swing.JButton();
-        lblCantidadComida = new javax.swing.JLabel();
+        btn_Comer = new javax.swing.JButton();
         lblTienda = new javax.swing.JLabel();
+        lblCantidadComida = new javax.swing.JLabel();
         btn_Tienda = new javax.swing.JButton();
         btn_Siguiente = new javax.swing.JButton();
         lblImagePou = new javax.swing.JLabel();
@@ -70,7 +70,11 @@ public class VistaCuarto extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 100, 206));
 
-        btn_Refrigerador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cofre.png"))); // NOI18N
+        lblRefrigerador.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        lblRefrigerador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRefrigerador.setText("Armario");
+
+        btn_Refrigerador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/nevera.png"))); // NOI18N
         btn_Refrigerador.setBorderPainted(false);
         btn_Refrigerador.setContentAreaFilled(false);
         btn_Refrigerador.addActionListener(new java.awt.event.ActionListener() {
@@ -79,20 +83,7 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        lblRefrigerador.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        lblRefrigerador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRefrigerador.setText("Cofre");
-
-        btn_Comer.setBackground(new java.awt.Color(204, 100, 206));
-        btn_Comer.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        btn_Comer.setText("Comer");
-        btn_Comer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ComerActionPerformed(evt);
-            }
-        });
-
-        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hamburguesa.png"))); // NOI18N
+        btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/hamburguesa.png"))); // NOI18N
         btn_Comida.setBorderPainted(false);
         btn_Comida.setContentAreaFilled(false);
         btn_Comida.addActionListener(new java.awt.event.ActionListener() {
@@ -101,14 +92,25 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        lblCantidadComida.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        lblCantidadComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCantidadComida.setText("Hamburguesa X 5");
+        btn_Comer.setBackground(new java.awt.Color(204, 255, 255));
+        btn_Comer.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        btn_Comer.setText("Vestir");
+        btn_Comer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Comer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ComerActionPerformed(evt);
+            }
+        });
 
         lblTienda.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        lblTienda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTienda.setText("Tienda");
 
-        btn_Tienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shop.png"))); // NOI18N
+        lblCantidadComida.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
+        lblCantidadComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCantidadComida.setText("hamburguesa X 5");
+
+        btn_Tienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/tienda.png"))); // NOI18N
         btn_Tienda.setBorderPainted(false);
         btn_Tienda.setContentAreaFilled(false);
         btn_Tienda.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +119,7 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        btn_Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/right_arrow.png"))); // NOI18N
+        btn_Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/right_arrow.png"))); // NOI18N
         btn_Siguiente.setBorderPainted(false);
         btn_Siguiente.setContentAreaFilled(false);
         btn_Siguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -126,9 +128,9 @@ public class VistaCuarto extends javax.swing.JPanel {
             }
         });
 
-        lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pou_estudiante.png"))); // NOI18N
+        lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/Pou.png"))); // NOI18N
 
-        btn_Anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left_arrow.png"))); // NOI18N
+        btn_Anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/left_arrow.png"))); // NOI18N
         btn_Anterior.setBorderPainted(false);
         btn_Anterior.setContentAreaFilled(false);
         btn_Anterior.addActionListener(new java.awt.event.ActionListener() {
@@ -138,26 +140,26 @@ public class VistaCuarto extends javax.swing.JPanel {
         });
 
         lblImagenMoneda.setFont(new java.awt.Font("Seravek", 1, 14)); // NOI18N
-        lblImagenMoneda.setForeground(new java.awt.Color(255, 255, 0));
-        lblImagenMoneda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coin.png"))); // NOI18N
+        lblImagenMoneda.setForeground(new java.awt.Color(255, 204, 0));
+        lblImagenMoneda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/Coin.png"))); // NOI18N
         lblImagenMoneda.setText("x 5000");
 
-        lblImagenHambrePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hambre.png"))); // NOI18N
+        lblImagenHambrePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/hambre.png"))); // NOI18N
 
         progressHambre.setToolTipText("");
-        progressHambre.setValue(20);
+        progressHambre.setValue(100);
 
         progressSalud.setValue(100);
 
-        lblImagenSalud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heart.png"))); // NOI18N
+        lblImagenSalud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/salud.png"))); // NOI18N
 
-        lblImagenEnergia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/energy.png"))); // NOI18N
+        lblImagenEnergia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/energia.png"))); // NOI18N
 
         progressEnergia.setValue(100);
 
         progressFelicidad.setValue(100);
 
-        lblImagenFelicidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/felicidad.png"))); // NOI18N
+        lblImagenFelicidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/felicidad.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -165,176 +167,174 @@ public class VistaCuarto extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(lblImagenMoneda)
-                            .addGap(18, 18, 18)
-                            .addComponent(lblImagenHambrePou, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(lblImagenSalud)
-                            .addGap(15, 15, 15)
-                            .addComponent(lblImagenEnergia)
-                            .addGap(21, 21, 21)
-                            .addComponent(lblImagenFelicidad))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(progressHambre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(progressEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_Anterior)
-                            .addGap(20, 20, 20)
-                            .addComponent(lblImagePou)
-                            .addGap(25, 25, 25)
-                            .addComponent(btn_Siguiente))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(btn_Refrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(38, 38, 38)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCantidadComida, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_Comida))
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_Tienda)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRefrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Refrigerador))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(lblCantidadComida)
+                            .addComponent(btn_Comida)
+                            .addComponent(btn_Comer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImagePou))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btn_Tienda)
+                            .addComponent(lblTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_Anterior)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Siguiente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblImagenMoneda)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(progressHambre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImagenHambrePou))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(progressEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(lblImagenSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(lblImagenEnergia)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImagenFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(476, Short.MAX_VALUE)
-                .addComponent(lblRefrigerador)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(lblImagenMoneda))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(lblImagenHambrePou))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(lblImagenSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblImagenEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(lblImagenFelicidad)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(progressHambre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(progressEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(progressFelicidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(70, 70, 70)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(btn_Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblImagePou)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(66, 66, 66)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_Comida)
-                            .addGap(2, 2, 2)
-                            .addComponent(lblCantidadComida)
-                            .addGap(2, 2, 2)
-                            .addComponent(btn_Comer))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_Refrigerador, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(lblImagenEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btn_Tienda)
-                                    .addGap(4, 4, 4)
-                                    .addComponent(lblTienda)))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGap(17, 17, 17)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblImagenHambrePou, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblImagenSalud))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblImagenMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(2, 2, 2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblImagenFelicidad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(progressHambre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progressEnergia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progressFelicidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progressSalud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_Anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblImagePou, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_Comida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCantidadComida)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Comer))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_Refrigerador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblRefrigerador))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_Tienda)
+                                .addGap(4, 4, 4)
+                                .addComponent(lblTienda)))
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_RefrigeradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RefrigeradorActionPerformed
-        
+        cont.abrirRefrigerador();
     }//GEN-LAST:event_btn_RefrigeradorActionPerformed
 
-    private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
-        Consumir();
-        
-    }//GEN-LAST:event_btn_ComerActionPerformed
-
     private void btn_ComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComidaActionPerformed
-        CambiarProducto();
-        
+        cambiarProducto();
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
+    private void btn_ComerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ComerActionPerformed
+        consumir();
+    }//GEN-LAST:event_btn_ComerActionPerformed
+
     private void btn_TiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TiendaActionPerformed
-        
+        cont.abrirTienda();
     }//GEN-LAST:event_btn_TiendaActionPerformed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
-        cont.IniciarSalaDeJuego();
+        cont.iniciarLaboratorio();
     }//GEN-LAST:event_btn_SiguienteActionPerformed
 
     private void btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AnteriorActionPerformed
-        cont.IniciarLaboratorio();
+        cont.iniciarCocina();
     }//GEN-LAST:event_btn_AnteriorActionPerformed
 
     
     
-    public void MostrarValoresPou(){
+   public void mostrarValoresPou(){
         progressHambre.setValue(pou.getValorHambre());
         progressSalud.setValue(pou.getValorSalud());
         progressEnergia.setValue(pou.getValorEnergia());
         progressFelicidad.setValue(pou.getValorFelicidad());
+        lblImagenMoneda.setText("x" + pou.getDinero() );
     }
     
-    public void MostrarProducto(){
+    public void mostrarProducto(){
        lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
-       btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(0).getNombre()+".png")));
+       btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
     }
-    
-    public void CambiarProducto(){
-        
-        if (posicionProducto > 2) {
+  
+    public void cambiarProducto(){
+        if (posicionProducto > productos.size()-1) {
             lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(0).getNombre()+".png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
             posicionProducto = 0;
         }else{
             lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(posicionProducto).getNombre()+".png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
             
             posicionProducto++;
         }  
     }
     
-    public void Consumir(){
-        if (posicionProducto > 3 || posicionProducto == 0) {
+    public void consumir(){
+        if (posicionProducto > 6 || posicionProducto == 0) {
             
             negocio.Consumir(productos.get(0), pou);
-            MostrarValoresPou();
+            mostrarValoresPou();
         }else {
             
             negocio.Consumir(productos.get(posicionProducto-1), pou);
-            MostrarValoresPou();
+            mostrarValoresPou();
         }
     }
 

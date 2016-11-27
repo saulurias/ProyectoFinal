@@ -57,7 +57,11 @@ public class IPouPersistencia implements PersistenciaPou{
             ResultSet rs = st.executeQuery(query);
             
             while (rs.next()) {               
-               pou = new Pou(rs.getInt("dinero"),rs.getInt("valorHambre"),rs.getInt("valorSalud"),rs.getInt("valorEnergia"),rs.getInt("valorFelicidad"));
+               pou = new Pou(rs.getInt("dinero"),
+                       rs.getInt("valorHambre"),
+                       rs.getInt("valorSalud"),
+                       rs.getInt("valorEnergia"),
+                       rs.getInt("valorFelicidad"));
            }
             
              st.close();

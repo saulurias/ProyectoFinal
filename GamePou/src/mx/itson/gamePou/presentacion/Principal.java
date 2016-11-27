@@ -20,12 +20,8 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public void iniciar(){
-        VistaCocina ventana = new VistaCocina();
-        panelPrincipal.removeAll();
-        panelPrincipal.add(ventana);
-        panelPrincipal.revalidate();
-        panelPrincipal.repaint();
-       
+        Controlador cont = new Controlador();
+        cont.iniciarCocina();
     }
 
     /**
@@ -38,7 +34,6 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPrincipal = new javax.swing.JPanel();
-        PanelEstante = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(358, 500));
@@ -47,20 +42,6 @@ public class Principal extends javax.swing.JFrame {
         panelPrincipal.setMinimumSize(new java.awt.Dimension(360, 500));
         panelPrincipal.setSize(new java.awt.Dimension(360, 500));
         panelPrincipal.setLayout(null);
-
-        javax.swing.GroupLayout PanelEstanteLayout = new javax.swing.GroupLayout(PanelEstante);
-        PanelEstante.setLayout(PanelEstanteLayout);
-        PanelEstanteLayout.setHorizontalGroup(
-            PanelEstanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        PanelEstanteLayout.setVerticalGroup(
-            PanelEstanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-
-        panelPrincipal.add(PanelEstante);
-        PanelEstante.setBounds(10, 170, 350, 190);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +93,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelEstante;
     public static javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

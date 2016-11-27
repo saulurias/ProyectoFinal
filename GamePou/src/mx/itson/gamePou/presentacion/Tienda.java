@@ -5,9 +5,11 @@
  */
 package mx.itson.gamePou.presentacion;
 
+import java.util.ArrayList;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.Seccion;
 import mx.itson.libreriaPou.implementacion.IProductoNegocio;
 import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
 import mx.itson.libreriaPou.interfaz.NegocioProducto;
@@ -24,24 +26,49 @@ public class Tienda extends javax.swing.JFrame {
      */
     public Tienda() {
         initComponents();
+        this.setSize(502, 335);
+        obtenerComidas();
+        mostrarProductos();
         
     }
     Controlador cont = new Controlador();
     PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productos = persistencia.obtenerProductos();
+    List<Producto> productosbd = persistencia.obtenerProductos();
     NegocioProducto negocio = new IProductoNegocio();;
-    
     Pou pou = cont.obtenerPou();
     
-    public void MostrarProductos(){
-        btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(0).getNombre()+".png")));
+    List<Producto> productos = new ArrayList();
+    
+    public void obtenerComidas(){
+        for (int i = 0; i < productosbd.size(); i++) {
+            if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
+                productos.add(productosbd.get(i));
+            }
+        }
+    }
+    
+    public void mostrarProductos(){
+        
+        lblImagenMoneda.setText("x" + pou.getDinero());
+        
+        btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
         lblPrimera.setText(productos.get(0).getNombre() + " $" + productos.get(0).getCosto());
         
-        btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/"+productos.get(1).getNombre()+".png")));
+        btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(1).getNombre()+".png")));
         lblSegunda.setText(productos.get(1).getNombre() + " $" + productos.get(1).getCosto());
         
-        btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagesc/"+productos.get(2).getNombre()+".png")));
+        btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(2).getNombre()+".png")));
         lblTercera.setText(productos.get(2).getNombre() + " $" + productos.get(2).getCosto());
+        
+        btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(3).getNombre()+".png")));
+        lblCuarto.setText(productos.get(3).getNombre() + " $" + productos.get(3).getCosto());
+        
+        btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(4).getNombre()+".png")));
+        lblQuinto.setText(productos.get(4).getNombre() + " $" + productos.get(4).getCosto());
+        
+        btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(5).getNombre()+".png")));
+        lblSexto.setText(productos.get(5).getNombre() + " $" + productos.get(5).getCosto());
+        
     }
 
     /**
@@ -60,80 +87,159 @@ public class Tienda extends javax.swing.JFrame {
         btn_Primero = new javax.swing.JButton();
         btn_Segundo = new javax.swing.JButton();
         btn_Tercero = new javax.swing.JButton();
+        btn_Quinto = new javax.swing.JButton();
+        lblQuinto = new javax.swing.JLabel();
+        btn_Sexto = new javax.swing.JButton();
+        lblSexto = new javax.swing.JLabel();
+        btn_Cuarto = new javax.swing.JButton();
+        lblCuarto = new javax.swing.JLabel();
+        lblImagenMoneda = new javax.swing.JLabel();
         lblImageEstante = new javax.swing.JLabel();
+        lblClicParaComprar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(502, 335));
+        setMinimumSize(new java.awt.Dimension(502, 335));
+        setSize(new java.awt.Dimension(502, 335));
 
+        panelEstante.setBackground(new java.awt.Color(255, 255, 255));
         panelEstante.setLayout(null);
 
         lblSegunda.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
-        lblSegunda.setForeground(new java.awt.Color(255, 255, 255));
+        lblSegunda.setForeground(new java.awt.Color(0, 0, 255));
         lblSegunda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSegunda.setText("Texto 2");
         panelEstante.add(lblSegunda);
-        lblSegunda.setBounds(180, 130, 180, 0);
+        lblSegunda.setBounds(230, 110, 180, 20);
 
         lblPrimera.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
-        lblPrimera.setForeground(new java.awt.Color(255, 255, 255));
+        lblPrimera.setForeground(new java.awt.Color(0, 0, 255));
         lblPrimera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrimera.setText("texto 1");
         panelEstante.add(lblPrimera);
-        lblPrimera.setBounds(10, 130, 170, 0);
+        lblPrimera.setBounds(20, 110, 170, 20);
 
         lblTercera.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
-        lblTercera.setForeground(new java.awt.Color(255, 255, 255));
+        lblTercera.setForeground(new java.awt.Color(0, 0, 255));
         lblTercera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTercera.setText("Texto 3");
         panelEstante.add(lblTercera);
-        lblTercera.setBounds(0, 210, 190, 0);
+        lblTercera.setBounds(110, 200, 190, 20);
 
+        btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
         btn_Primero.setBorderPainted(false);
+        btn_Primero.setContentAreaFilled(false);
         btn_Primero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_PrimeroActionPerformed(evt);
             }
         });
         panelEstante.add(btn_Primero);
-        btn_Primero.setBounds(40, 100, 75, 29);
+        btn_Primero.setBounds(60, 30, 100, 70);
 
+        btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
         btn_Segundo.setBorderPainted(false);
+        btn_Segundo.setContentAreaFilled(false);
         btn_Segundo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_SegundoActionPerformed(evt);
             }
         });
         panelEstante.add(btn_Segundo);
-        btn_Segundo.setBounds(230, 100, 75, 29);
+        btn_Segundo.setBounds(280, 30, 80, 70);
 
+        btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
         btn_Tercero.setBorderPainted(false);
+        btn_Tercero.setContentAreaFilled(false);
         btn_Tercero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_TerceroActionPerformed(evt);
             }
         });
         panelEstante.add(btn_Tercero);
-        btn_Tercero.setBounds(40, 190, 75, 29);
+        btn_Tercero.setBounds(160, 120, 80, 70);
 
-        lblImageEstante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/estante.jpg"))); // NOI18N
+        btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
+        btn_Quinto.setBorderPainted(false);
+        btn_Quinto.setContentAreaFilled(false);
+        btn_Quinto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_QuintoActionPerformed(evt);
+            }
+        });
+        panelEstante.add(btn_Quinto);
+        btn_Quinto.setBounds(50, 200, 100, 70);
+
+        lblQuinto.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        lblQuinto.setForeground(new java.awt.Color(0, 0, 255));
+        lblQuinto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuinto.setText("texto 5");
+        panelEstante.add(lblQuinto);
+        lblQuinto.setBounds(10, 280, 170, 20);
+
+        btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
+        btn_Sexto.setBorderPainted(false);
+        btn_Sexto.setContentAreaFilled(false);
+        btn_Sexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SextoActionPerformed(evt);
+            }
+        });
+        panelEstante.add(btn_Sexto);
+        btn_Sexto.setBounds(260, 200, 100, 70);
+
+        lblSexto.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        lblSexto.setForeground(new java.awt.Color(0, 0, 255));
+        lblSexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSexto.setText("texto 6");
+        panelEstante.add(lblSexto);
+        lblSexto.setBounds(220, 280, 170, 20);
+
+        btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/manzana.png"))); // NOI18N
+        btn_Cuarto.setBorderPainted(false);
+        btn_Cuarto.setContentAreaFilled(false);
+        btn_Cuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CuartoActionPerformed(evt);
+            }
+        });
+        panelEstante.add(btn_Cuarto);
+        btn_Cuarto.setBounds(370, 110, 100, 70);
+
+        lblCuarto.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        lblCuarto.setForeground(new java.awt.Color(0, 0, 255));
+        lblCuarto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCuarto.setText("texto 4");
+        panelEstante.add(lblCuarto);
+        lblCuarto.setBounds(330, 190, 170, 20);
+
+        lblImagenMoneda.setFont(new java.awt.Font("Seravek", 1, 24)); // NOI18N
+        lblImagenMoneda.setForeground(new java.awt.Color(255, 204, 0));
+        lblImagenMoneda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/Coin.png"))); // NOI18N
+        lblImagenMoneda.setText("x 5000");
+        panelEstante.add(lblImagenMoneda);
+        lblImagenMoneda.setBounds(10, 0, 130, 39);
+
+        lblImageEstante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/estante.png"))); // NOI18N
+        lblImageEstante.setMaximumSize(new java.awt.Dimension(502, 295));
+        lblImageEstante.setMinimumSize(new java.awt.Dimension(502, 295));
         panelEstante.add(lblImageEstante);
-        lblImageEstante.setBounds(0, 0, 370, 300);
+        lblImageEstante.setBounds(10, 30, 490, 300);
+
+        lblClicParaComprar.setFont(new java.awt.Font("Seravek", 1, 18)); // NOI18N
+        lblClicParaComprar.setText("Clic En El Producto Para Comprar");
+        panelEstante.add(lblClicParaComprar);
+        lblClicParaComprar.setBounds(150, 0, 280, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(panelEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(panelEstante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
         );
 
         pack();
@@ -142,61 +248,57 @@ public class Tienda extends javax.swing.JFrame {
     private void btn_PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrimeroActionPerformed
         Producto producto = productos.get(0);
         negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_PrimeroActionPerformed
 
     private void btn_SegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SegundoActionPerformed
         Producto producto = productos.get(1);
         negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_SegundoActionPerformed
 
     private void btn_TerceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TerceroActionPerformed
         Producto producto = productos.get(2);
         negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
 
     }//GEN-LAST:event_btn_TerceroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tienda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btn_QuintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QuintoActionPerformed
+        Producto producto = productos.get(3);
+        negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
+    }//GEN-LAST:event_btn_QuintoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tienda().setVisible(true);
-            }
-        });
-    }
+    private void btn_SextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SextoActionPerformed
+        Producto producto = productos.get(4);
+        negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
+    }//GEN-LAST:event_btn_SextoActionPerformed
+
+    private void btn_CuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CuartoActionPerformed
+        Producto producto = productos.get(5);
+        negocio.Comprar(producto, pou);
+        lblImagenMoneda.setText("x" + pou.getDinero());
+    }//GEN-LAST:event_btn_CuartoActionPerformed
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Cuarto;
     private javax.swing.JButton btn_Primero;
+    private javax.swing.JButton btn_Quinto;
     private javax.swing.JButton btn_Segundo;
+    private javax.swing.JButton btn_Sexto;
     private javax.swing.JButton btn_Tercero;
+    private javax.swing.JLabel lblClicParaComprar;
+    private javax.swing.JLabel lblCuarto;
     private javax.swing.JLabel lblImageEstante;
+    private javax.swing.JLabel lblImagenMoneda;
     private javax.swing.JLabel lblPrimera;
+    private javax.swing.JLabel lblQuinto;
     private javax.swing.JLabel lblSegunda;
+    private javax.swing.JLabel lblSexto;
     private javax.swing.JLabel lblTercera;
     private javax.swing.JPanel panelEstante;
     // End of variables declaration//GEN-END:variables

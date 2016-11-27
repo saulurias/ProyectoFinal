@@ -18,6 +18,9 @@ public class Producto {
     private int valorEnergia;
     private int valorFelicidad;
     private int cantidad;
+    private Seccion seccion;
+
+    
    
     /**
      * Constructor de la entidad Producto
@@ -29,8 +32,9 @@ public class Producto {
      * @param valorEnergia
      * @param valorFelicidad
      * @param cantidad 
+     * @param seccion 
      */
-    public Producto(int id, String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, int cantidad) {
+   public Producto(int id, String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, int cantidad, Seccion seccion) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;
@@ -39,6 +43,7 @@ public class Producto {
         this.valorEnergia = valorEnergia;
         this.valorFelicidad = valorFelicidad;
         this.cantidad = cantidad;
+        this.seccion = seccion;
     }
 
     
@@ -170,6 +175,23 @@ public class Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    /**
+    * Metodo que obtiene el valor del atributo seccion de la entidad Producto
+    * @return 
+    */
+    public Seccion getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * Metodo que asigna el atributo seccion a la entidad Producto
+     * @param seccion 
+     */
+    public void setSeccion(Seccion seccion) {
+        this.seccion = seccion;
+    }
+    
     
    
 }
