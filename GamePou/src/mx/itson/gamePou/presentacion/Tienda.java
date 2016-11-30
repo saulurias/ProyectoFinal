@@ -11,10 +11,9 @@ import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.IProductoNegocio;
-import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
-import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+import mx.itson.libreriaPou.implementacion.NegocioPou;
+import mx.itson.libreriaPou.implementacion.PersistenciaProducto;
+import mx.itson.libreriaPou.interfaz.IPouNegocio;
 
 /**
  * Frame utilizado para mostrar los produtos que el usuario puede comprar dependiendo la seccion
@@ -34,8 +33,8 @@ public class Tienda extends javax.swing.JFrame {
      * Variables utilizadas durante la ejecucion de la Tienda
      */
     Controlador cont = new Controlador();
-    PersistenciaProducto persistencia = new IProductoPersistencia();
-    NegocioProducto negocio = new IProductoNegocio();;
+    PersistenciaProducto persistencia = new PersistenciaProducto();
+    IPouNegocio negocioPou = new NegocioPou();
     
     Pou pou = cont.obtenerPou();
     
@@ -279,38 +278,38 @@ public class Tienda extends javax.swing.JFrame {
 
     private void btn_PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrimeroActionPerformed
         Producto producto = productos.get(0);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_PrimeroActionPerformed
 
     private void btn_SegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SegundoActionPerformed
         Producto producto = productos.get(1);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_SegundoActionPerformed
 
     private void btn_TerceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TerceroActionPerformed
         Producto producto = productos.get(2);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
 
     }//GEN-LAST:event_btn_TerceroActionPerformed
 
     private void btn_QuintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QuintoActionPerformed
         Producto producto = productos.get(3);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_QuintoActionPerformed
 
     private void btn_SextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SextoActionPerformed
         Producto producto = productos.get(4);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_SextoActionPerformed
 
     private void btn_CuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CuartoActionPerformed
         Producto producto = productos.get(5);
-        negocio.Comprar(producto, pou);
+        negocioPou.comprar(producto, pou);
         lblImagenMoneda.setText("x" + pou.getDinero());
     }//GEN-LAST:event_btn_CuartoActionPerformed
 

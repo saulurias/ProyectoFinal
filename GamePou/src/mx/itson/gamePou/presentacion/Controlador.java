@@ -6,17 +6,17 @@
 package mx.itson.gamePou.presentacion;
 
 import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.implementacion.IPouPersistencia;
-import mx.itson.libreriaPou.interfaz.PersistenciaPou;
+import mx.itson.libreriaPou.implementacion.PersistenciaPou;
 import static mx.itson.gamePou.presentacion.Principal.panelPrincipal;
 import mx.itson.libreriaPou.entidades.Seccion;
+import mx.itson.libreriaPou.interfaz.IPouPersistencia;
 
 /**
  * Entidad utilizada para controlar los paneles y frame utilizados en el proyecto GamePou
  * @author soygo
  */
 public class Controlador {
-    PersistenciaPou persistencia = new IPouPersistencia();
+    PersistenciaPou persistencia = new PersistenciaPou();
     Pou pou = persistencia.obtenerPou();
 
     

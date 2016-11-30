@@ -7,12 +7,10 @@ package mx.itson.gamePou.presentacion;
 
 import java.util.ArrayList;
 import java.util.List;
-import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.RegistroInventario;
 import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.IProductoNegocio;
-import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
-import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+import mx.itson.libreriaPou.implementacion.PersistenciaRegistroInventario;
+import mx.itson.libreriaPou.interfaz.IRegistroInventarioPersistencia;
 
 /**
  * Frame utilizado para mostrar los productos que contiene el jugador en una Seccion
@@ -30,34 +28,35 @@ public class Estante extends javax.swing.JFrame {
     /**
      * Variables utilizadas en la ejecución del Estante
      */
-    PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productosbd = persistencia.obtenerProductos();
-    NegocioProducto negocio = new IProductoNegocio();
-    List<Producto> productos = new ArrayList();
+   
+    //NUEVOS ATRIBUTOS
     
+    IRegistroInventarioPersistencia registroInventarioPersistencia = new PersistenciaRegistroInventario();
+    List<RegistroInventario> registrosbd = registroInventarioPersistencia.obtenerRegistrosInventario();
+    List<RegistroInventario> registros = new ArrayList();
     /**
      * Metodo utilizado para obtener los productos dependiendo la seccion
      * @param seccion 
      */
     public void obtenerProductosSeccion(Seccion seccion) {
         if (seccion == Seccion.COCINA) {
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
-                    productos.add(productosbd.get(i));
+            for (int i = 0; i < registrosbd.size(); i++) {
+                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.COCINA) {
+                    registros.add(registrosbd.get(i));
                 }
             }
             mostrarProductos();
         }else if (seccion == Seccion.CUARTO){
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
-                    productos.add(productosbd.get(i));
+            for (int i = 0; i < registrosbd.size(); i++) {
+                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.CUARTO) {
+                    registros.add(registrosbd.get(i));
                 }
             }
             mostrarProductos();
         }else if (seccion == Seccion.LABORATORIO){
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
-                    productos.add(productosbd.get(i));
+            for (int i = 0; i < registrosbd.size(); i++) {
+                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.LABORATORIO) {
+                    registros.add(registrosbd.get(i));
                 }
             }
             mostrarProductos();
@@ -69,23 +68,23 @@ public class Estante extends javax.swing.JFrame {
      */
     public void mostrarProductos(){
         
-        lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-        lblPrimera.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+        lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
+        lblPrimera.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
         
-        lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(1).getNombre()+".png")));
-        lblSegunda.setText(productos.get(1).getNombre() + " X " + productos.get(1).getCantidad());
+        lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(1).getProducro().getNombre()+".png")));
+        lblSegunda.setText(registros.get(1).getProducro().getNombre() + " X " + registros.get(1).getCantidad());
         
-        lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(2).getNombre()+".png")));
-        lblTercera.setText(productos.get(2).getNombre() + " X " + productos.get(2).getCantidad());
+        lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(2).getProducro().getNombre()+".png")));
+        lblTercera.setText(registros.get(2).getProducro().getNombre() + " X " + registros.get(2).getCantidad());
         
-        lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(3).getNombre()+".png")));
-        lblCuarta.setText(productos.get(3).getNombre() + " X " + productos.get(3).getCantidad());
+        lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(3).getProducro().getNombre()+".png")));
+        lblCuarta.setText(registros.get(3).getProducro().getNombre() + " X " + registros.get(3).getCantidad());
         
-        lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(4).getNombre()+".png")));
-        lblQuinta.setText(productos.get(4).getNombre() + " X " + productos.get(4).getCantidad());
+        lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(4).getProducro().getNombre()+".png")));
+        lblQuinta.setText(registros.get(4).getProducro().getNombre() + " X " + registros.get(4).getCantidad());
         
-        lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(5).getNombre()+".png")));
-        lblSexta.setText(productos.get(5).getNombre() + " X " + productos.get(5).getCantidad());
+        lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(5).getProducro().getNombre()+".png")));
+        lblSexta.setText(registros.get(5).getProducro().getNombre() + " X " + registros.get(5).getCantidad());
     }
 
     /**

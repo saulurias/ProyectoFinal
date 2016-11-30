@@ -13,13 +13,13 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Conexion;
 import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.interfaz.PersistenciaPou;
+import mx.itson.libreriaPou.interfaz.IPouPersistencia;
 
 /**
  *  Implementacion que posee los metodos de Pou
  * @author SaulUrias
  */
-public class IPouPersistencia implements PersistenciaPou{
+public class PersistenciaPou implements IPouPersistencia{
     Connection conn = Conexion.conexion();
     
     /**

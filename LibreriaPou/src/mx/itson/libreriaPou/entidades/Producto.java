@@ -17,7 +17,6 @@ public class Producto {
     private int valorSalud;
     private int valorEnergia;
     private int valorFelicidad;
-    private int cantidad;
     private Seccion seccion;
 
     
@@ -31,10 +30,9 @@ public class Producto {
      * @param valorSalud
      * @param valorEnergia
      * @param valorFelicidad
-     * @param cantidad 
      * @param seccion 
      */
-   public Producto(int id, String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, int cantidad, Seccion seccion) {
+   public Producto(int id, String nombre, int costo, int valorHambre, int valorSalud, int valorEnergia, int valorFelicidad, Seccion seccion) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;
@@ -42,7 +40,6 @@ public class Producto {
         this.valorSalud = valorSalud;
         this.valorEnergia = valorEnergia;
         this.valorFelicidad = valorFelicidad;
-        this.cantidad = cantidad;
         this.seccion = seccion;
     }
 
@@ -158,22 +155,6 @@ public class Producto {
      */
     public void setValorFelicidad(int valorFelicidad) {
         this.valorFelicidad = valorFelicidad;
-    }
-
-    /**
-    * Metodo que obtiene el valor del atributo cantidad de la entidad Producto
-    * @return 
-    */
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    /**
-     * Metodo que asigna el atributo cantidad a la entidad Producto
-     * @param cantidad 
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
     }
 
     /**

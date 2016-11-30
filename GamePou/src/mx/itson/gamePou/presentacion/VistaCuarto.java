@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.RegistroInventario;
 import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.IProductoNegocio;
-import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
-import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
-
+import mx.itson.libreriaPou.implementacion.NegocioPou;
+import mx.itson.libreriaPou.implementacion.PersistenciaProducto;
+import mx.itson.libreriaPou.implementacion.PersistenciaRegistroInventario;
+import mx.itson.libreriaPou.interfaz.IPouNegocio;
+import mx.itson.libreriaPou.interfaz.IRegistroInventarioPersistencia;
 
 /**
  * Panel utilizado para mostrar la vista de la seccion Cuarto
@@ -40,22 +41,15 @@ public class VistaCuarto extends javax.swing.JPanel {
     Pou pou = cont.obtenerPou();;
     int posicionProducto = 1;
     
-    PersistenciaProducto persistencia = new IProductoPersistencia();
+    PersistenciaProducto persistencia = new PersistenciaProducto();
     List<Producto> productosbd = persistencia.obtenerProductos();
-    NegocioProducto negocio = new IProductoNegocio();
+    IPouNegocio negocioPou = new NegocioPou();
     List<Producto> productos = new ArrayList();
     
-    /**
-     * Metodo utilizado para obtener los trajes disponibles que el usuario puede utilizar
-     */
-    public void obtenerTrajes(){
-        for (int i = 0; i < productosbd.size(); i++) {
-            if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
-                productos.add(productosbd.get(i));
-            }
-        }
-        mostrarProducto();
-    }
+    IRegistroInventarioPersistencia registroInventarioPersistencia = new PersistenciaRegistroInventario();
+    List<RegistroInventario> registrosbd = registroInventarioPersistencia.obtenerRegistrosInventario();
+    List<RegistroInventario> registros = new ArrayList();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -197,7 +191,7 @@ public class VistaCuarto extends javax.swing.JPanel {
                         .addComponent(btn_Anterior)
                         .addGap(29, 29, 29)
                         .addComponent(lblImagePou)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_Siguiente)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -277,6 +271,7 @@ public class VistaCuarto extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_ComidaActionPerformed
 
     private void btn_VestirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VestirActionPerformed
+        obtenerRegistros();
         consumir();
         btn_Vestir.setEnabled(false);
     }//GEN-LAST:event_btn_VestirActionPerformed
@@ -289,9 +284,26 @@ public class VistaCuarto extends javax.swing.JPanel {
         cont.iniciarCocina();
     }//GEN-LAST:event_btn_AnteriorActionPerformed
 
+    /**
+     * Metodo utilizado para obtener los trajes disponibles que el usuario puede utilizar
+     */
+    public void obtenerTrajes(){
+        for (int i = 0; i < productosbd.size(); i++) {
+            if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
+                productos.add(productosbd.get(i));
+            }
+        }
+        mostrarProducto();
+    }
+    public void obtenerRegistros(){
+        for (int i = 0; i < registrosbd.size(); i++) {
+            if (registrosbd.get(i).getProducro().getSeccion() == Seccion.CUARTO) {
+                registros.add(registrosbd.get(i));
+            }
+        }
+    }
     
-    
-   public void mostrarValoresPou(){
+     public void mostrarValoresPou(){
         progressHambre.setValue(pou.getValorHambre());
         progressSalud.setValue(pou.getValorSalud());
         progressEnergia.setValue(pou.getValorEnergia());
@@ -331,11 +343,11 @@ public class VistaCuarto extends javax.swing.JPanel {
     public void consumir(){
       if (posicionProducto > 6 || posicionProducto == 0) {
             lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
-            negocio.Consumir(productos.get(0), pou);
+            negocioPou.consumir(registros.get(0), pou);
             mostrarValoresPou();
         }else {
             lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto-1).getNombre()+".png")));
-            negocio.Consumir(productos.get(posicionProducto-1), pou);
+            negocioPou.consumir(registros.get(posicionProducto-1), pou);
             mostrarValoresPou();
         }
     }

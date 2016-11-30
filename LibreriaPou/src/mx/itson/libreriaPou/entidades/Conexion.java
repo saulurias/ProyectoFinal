@@ -20,11 +20,11 @@ public class Conexion {
     static{
         try {
              String url = "jdbc:mysql://localhost:3306"; 
-             String dbName = "/poudb";
-             String user = "root";
-             String password = "";
-             conn = DriverManager.getConnection(url+dbName,user,password);
-             System.out.println("Conectado a " + dbName);
+             String nombreDb = "/poudb";
+             String usuario = "root";
+             String contrasenia = "";
+             conn = DriverManager.getConnection(url+nombreDb,usuario,contrasenia);
+             System.out.println("Conectado a " + nombreDb);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se genero un error al momento de hacer la conección con la base de datos");
         }

@@ -7,25 +7,26 @@ package mx.itson.libreriaPou.interfaz;
 
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.RegistroInventario;
 
 /**
  *  Interface que posee los metodos del negocio de Producto
  * @author SaulUrias
  */
-public interface NegocioProducto {
+public interface IPouNegocio {
     /**
-     * Metodo utilizado para Consumir un producto, La cantidad de producto debe ser mayor a 0
-     * @param producto
-     * @param pou 
+     * Metodo utilizado para consumir un producto, La cantidad de producto debe ser mayor a 0
+     * @param registro
+     * @param pou
      */
-    public void Consumir(Producto producto, Pou pou);
+    public void consumir(RegistroInventario registro, Pou pou);
     
     /**
      * Metodo utilizado para comprarle producto a Pou
      * @param producto
-     * @param pou 
+     * @param pou
      */
-    public void Comprar(Producto producto, Pou pou);
+    public void comprar(Producto producto, Pou pou);
  
     
 }

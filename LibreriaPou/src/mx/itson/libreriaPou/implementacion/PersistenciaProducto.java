@@ -6,7 +6,6 @@
 package mx.itson.libreriaPou.implementacion;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,35 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Conexion;
-import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
 import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.interfaz.PersistenciaPou;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+import mx.itson.libreriaPou.interfaz.IProductoPersistencia;
 
 /**
  * Implementacion que posee los metodos de la persistencia de Producto 
  * @author SaulUrias
  */
-public class IProductoPersistencia implements PersistenciaProducto {
+public class PersistenciaProducto implements IProductoPersistencia {
     Connection conn = Conexion.conexion();
     Seccion seccion;
-    
-    /**
-    * Metodo que modifica los valores de producto en la base de datos
-    * @param producto 
-    */
-    @Override
-   public void actualizarProducto(Producto producto){
-       try {
-           String query = "UPDATE producto SET cantidad =" + producto.getCantidad() +" WHERE producto.id = '"+ producto.getId() +"';";
-                    
-           PreparedStatement pst = conn.prepareStatement(query);
-           pst.execute();
-       } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al modificar los valores de Producto");
-       }
-   }
+
    
     /**
      * Metodo utilizado para obtener la lista de productos que se encuentran guardados dentro de la Base de Datos
@@ -71,7 +53,6 @@ public class IProductoPersistencia implements PersistenciaProducto {
                            rs.getInt("valorSalud"),
                            rs.getInt("valorEnergia"),
                            rs.getInt("valorFelicidad"),
-                           rs.getInt("cantidad"),
                            seccion);
                    productos.add(p);
                }
@@ -86,20 +67,6 @@ public class IProductoPersistencia implements PersistenciaProducto {
        
        return productos;
    }
-      
-      /**
-     * Metodo utilizado para actualizar la información dentro de la base de datos
-     * @param pou
-     * @param producto 
-     */
-    public void actualizarBD(Pou pou, Producto producto){
-            //Se editan los valores de Producto dentro de la base de datos
-            PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
-            persistenciaProducto.actualizarProducto(producto);
-            
-            //Se editan los valores de Pou dentro de la base de datos
-            PersistenciaPou persistenciaPou = new IPouPersistencia();
-            persistenciaPou.actualizarPou(pou);
-    }
+
     
 }

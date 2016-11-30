@@ -11,7 +11,7 @@ import mx.itson.libreriaPou.entidades.Pou;
  * Interface que posee los metodos de persistencia de Pou
  * @author SaulUrias
  */
-public interface PersistenciaPou {
+public interface IPouPersistencia {
     /**
      * Metodo que modifica los valores de pou despues en la base de datos
      * @param pou 

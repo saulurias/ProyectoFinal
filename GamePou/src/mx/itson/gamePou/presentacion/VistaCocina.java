@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.entidades.Producto;
+import mx.itson.libreriaPou.entidades.RegistroInventario;
 import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.IProductoNegocio;
-import mx.itson.libreriaPou.implementacion.IProductoPersistencia;
-import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+import mx.itson.libreriaPou.implementacion.NegocioPou;
+import mx.itson.libreriaPou.implementacion.NegocioRegistroInventario;
+import mx.itson.libreriaPou.implementacion.PersistenciaRegistroInventario;
+import mx.itson.libreriaPou.interfaz.IPouNegocio;
+import mx.itson.libreriaPou.interfaz.IRegistroInventarioNegocio;
+import mx.itson.libreriaPou.interfaz.IRegistroInventarioPersistencia;
 
 /**
  * Panel utilizado para mostrar la vista de la seccion Cocina
@@ -40,12 +42,20 @@ public class VistaCocina extends javax.swing.JPanel {
     Pou pou = cont.obtenerPou();
     int posicionProducto = 1;
 
-    PersistenciaProducto persistencia = new IProductoPersistencia();
-    List<Producto> productosbd = persistencia.obtenerProductos();
-    NegocioProducto negocio = new IProductoNegocio();
+    //PersistenciaProducto persistencia = new PersistenciaProducto();
+    //List<Producto> productosbd = persistencia.obtenerProductos();
+    //NegocioPou negocio = new NegocioPou();
 
-    List<Producto> productos = new ArrayList();
+    //List<Producto> productos = new ArrayList();
     
+    
+    IRegistroInventarioPersistencia registroInventarioPersistencia = new PersistenciaRegistroInventario();
+    List<RegistroInventario> registrosbd = registroInventarioPersistencia.obtenerRegistrosInventario();
+    List<RegistroInventario> registros = new ArrayList();
+    
+     IPouNegocio negocioPou = new NegocioPou();
+     IRegistroInventarioNegocio negocioRegistroInventario = new NegocioRegistroInventario();
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -305,13 +315,13 @@ public class VistaCocina extends javax.swing.JPanel {
      * Metodo utilizado para obtener los productos de la seccion Cocina
      */
     public void obtenerProductosSeccionCocina(){
-        productos.clear();
-        for (int i = 0; i < productosbd.size(); i++) {
-            if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
-                productos.add(productosbd.get(i));
+        registros.clear();
+        for (int i = 0; i < registrosbd.size(); i++) {
+            if (registrosbd.get(i).getProducro().getSeccion() == Seccion.COCINA) {
+                registros.add(registrosbd.get(i));
             }
         }
-        if (productos.size() == 0) {
+        if (registros.size() == 0) {
             JOptionPane.showMessageDialog(null, "No fue posible encontrar los productos de cocina");
         }else{
             mostrarProducto();
@@ -325,11 +335,11 @@ public class VistaCocina extends javax.swing.JPanel {
      */
     public void mostrarProducto(){
         if (posicionProducto <= 0) {
-            lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
+            lblCantidadComida.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
         }else {
-            lblCantidadComida.setText(productos.get(posicionProducto-1).getNombre() + " X " + productos.get(posicionProducto-1).getCantidad());
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto-1).getNombre()+".png")));
+            lblCantidadComida.setText(registros.get(posicionProducto-1).getProducro().getNombre() + " X " + registros.get(posicionProducto-1).getCantidad());
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto-1).getProducro().getNombre()+".png")));
         } 
     } 
     /**
@@ -348,15 +358,15 @@ public class VistaCocina extends javax.swing.JPanel {
      * Metodo utilizado para cambiar el producto dentro de la vista
      */
     public void cambiarProducto(){
-        if (posicionProducto > productos.size()-1) {
-            lblCantidadComida.setText(productos.get(0).getNombre() + " X " + productos.get(0).getCantidad());
+        if (posicionProducto > registros.size()-1) {
+            lblCantidadComida.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(0).getNombre()+".png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
             posicionProducto = 0;
         }else{
-            lblCantidadComida.setText(productos.get(posicionProducto).getNombre() + " X " + productos.get(posicionProducto).getCantidad());
+            lblCantidadComida.setText(registros.get(posicionProducto).getProducro().getNombre() + " X " + registros.get(posicionProducto).getCantidad());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+productos.get(posicionProducto).getNombre()+".png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto).getProducro().getNombre()+".png")));
             
             posicionProducto++;
         }  
@@ -367,11 +377,13 @@ public class VistaCocina extends javax.swing.JPanel {
      */
     public void consumir(){
         if (posicionProducto > 6 || posicionProducto == 0) {
-            negocio.Consumir(productos.get(0), pou);
+            negocioPou.consumir(registros.get(0), pou);
+            negocioRegistroInventario.consumir(registros.get(0));
             mostrarValoresPou();
             obtenerProductosSeccionCocina();
         }else {
-            negocio.Consumir(productos.get(posicionProducto-1), pou);
+            negocioPou.consumir(registros.get(posicionProducto-1), pou);
+            negocioRegistroInventario.consumir(registros.get(posicionProducto-1));
             mostrarValoresPou();
             obtenerProductosSeccionCocina();
         }

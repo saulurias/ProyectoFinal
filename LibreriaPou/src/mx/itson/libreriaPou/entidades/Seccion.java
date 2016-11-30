@@ -6,7 +6,7 @@
 package mx.itson.libreriaPou.entidades;
 
 /**
- *  Enumerador que define la seccion de Producto
+ * Enumerador que define la seccion de Producto
  * @author SaulUrias
  */
 public enum Seccion {

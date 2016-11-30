@@ -8,39 +8,39 @@ package mx.itson.libreriaPou.implementacion;
 import javax.swing.JOptionPane;
 import mx.itson.libreriaPou.entidades.Pou;
 import mx.itson.libreriaPou.entidades.Producto;
-import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.interfaz.NegocioProducto;
-import mx.itson.libreriaPou.interfaz.PersistenciaPou;
-import mx.itson.libreriaPou.interfaz.PersistenciaProducto;
+import mx.itson.libreriaPou.entidades.RegistroInventario;
+import mx.itson.libreriaPou.interfaz.IPouPersistencia;
+import mx.itson.libreriaPou.interfaz.IProductoPersistencia;
+import mx.itson.libreriaPou.interfaz.IPouNegocio;
 
 
 /**
  * Implementacion que posee los metodos del negocio de Producto
  * @author SaulUrias
  */
-public class IProductoNegocio implements NegocioProducto{
+public class NegocioPou implements IPouNegocio{
     
-    PersistenciaProducto persistenciaProducto = new IProductoPersistencia();
-    PersistenciaPou persistenciaPou = new IPouPersistencia();
+    IProductoPersistencia persistenciaProducto = new PersistenciaProducto();
+    IPouPersistencia persistenciaPou = new PersistenciaPou();
     
     /**
-     * Metodo utilizado para Alimentar a PouLa cantidad de producto debe ser mayor a 0
-     * @param producto
+     * Metodo utilizado para Alimentar a PouLa cantidad de registro debe ser mayor a 0
+     * @param registro
      * @param pou 
      */
     @Override
-    public void Consumir(Producto producto, Pou pou){
+    public void consumir(RegistroInventario registro, Pou pou){
         
-        if (producto.getCantidad() <= 0) {
+        if (registro.getCantidad() <= 0) {
             JOptionPane.showMessageDialog(null, "No hay suficiente producto");
         }else {
-            /**
+         /**
          * Se obtienen los valores que el producto tiene
          */
-        int hambre = producto.getValorHambre();
-        int salud = producto.getValorSalud();
-        int energia = producto.getValorEnergia();
-        int felicidad = producto.getValorFelicidad();
+        int hambre = registro.getProducro().getValorHambre();
+        int salud = registro.getProducro().getValorSalud();
+        int energia = registro.getProducro().getValorEnergia();
+        int felicidad = registro.getProducro().getValorFelicidad();
         
         
         /**
@@ -97,25 +97,13 @@ public class IProductoNegocio implements NegocioProducto{
         }else {
             pou.setValorFelicidad(felicidadPou);
         }
-        
-        
-        //Restar el producto consumido en caso de no estar en la Seccion Cuarto
-            int comidaRestante = producto.getCantidad() - 1;
-            if (producto.getSeccion() != Seccion.CUARTO) {
-                if (comidaRestante <= 0) {
 
-                    producto.setCantidad(0);
-                } else {
-                    producto.setCantidad(comidaRestante);
-                }
-            }
-        
-        
         /**
          * Se llama el metodo que actualiza la base de datos
          */
             persistenciaPou.actualizarPou(pou);
-            persistenciaProducto.actualizarProducto(producto);
+            //LO QUE AHORA SE VA A ACTUALIZAR ES EL REGISTROINVENTARIO
+            //persistenciaProducto.actualizarProducto(registro);
       
        }
     }
@@ -126,41 +114,34 @@ public class IProductoNegocio implements NegocioProducto{
      * @param pou 
      */
     @Override
-    public void Comprar(Producto producto, Pou pou){
+    public void comprar(Producto producto, Pou pou){
         /**
          * Se obtiene el costo del producto a comprar
          */
-        int costoComida = producto.getCosto();
+        int costoProducto = producto.getCosto();
         /**
          * Se obtiene el dinero con el que cuenta Pou
          */
         int dinero = pou.getDinero();
         
-        /**
-         * Se obtiene la cantidad de objetos del producto 
-         */
-        int cantidadProducto = producto.getCantidad();
+        
 
         /**
-         * Se le asigna el dinero restante a Pou y se agrega el producto 
+         * Se le asigna el dinero restante a Pou 
          */
-        if (costoComida > dinero) {
-            JOptionPane.showMessageDialog(null, "Se necesita más dinero para comprar este objeto");
-        }else {
-            int totalDinero = dinero-costoComida;
+        if (costoProducto > dinero) {
+            JOptionPane.showMessageDialog(null, "Se necesita más dinero para comprar este producto");
+        } else {
+            int totalDinero = dinero-costoProducto;
             
             pou.setDinero(totalDinero);
-            
-            int totalComida = producto.getCantidad()+1;
-            
-            producto.setCantidad(totalComida);
-            
-            
+
             /**
              * Se llama el metodo que actualiza la base de datos
              */
             persistenciaPou.actualizarPou(pou);
-            persistenciaProducto.actualizarProducto(producto);
+            //AHORA SE VA A ACTUALIZAR EL REGISTRO
+            //persistenciaProducto.actualizarProducto(producto);
         }  
     }
     
