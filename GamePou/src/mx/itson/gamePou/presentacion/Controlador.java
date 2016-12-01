@@ -5,11 +5,12 @@
  */
 package mx.itson.gamePou.presentacion;
 
-import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.implementacion.PersistenciaPou;
+
+import mx.itson.gamePou.entidades.Pou;
+import mx.itson.gamePou.entidades.Seccion;
+import mx.itson.gamePou.implementacion.PersistenciaPou;
 import static mx.itson.gamePou.presentacion.Principal.panelPrincipal;
-import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.interfaz.IPouPersistencia;
+
 
 /**
  * Entidad utilizada para controlar los paneles y frame utilizados en el proyecto GamePou

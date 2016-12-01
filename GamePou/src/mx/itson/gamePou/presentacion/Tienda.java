@@ -8,12 +8,12 @@ package mx.itson.gamePou.presentacion;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.entidades.Producto;
-import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.NegocioPou;
-import mx.itson.libreriaPou.implementacion.PersistenciaProducto;
-import mx.itson.libreriaPou.interfaz.IPouNegocio;
+import mx.itson.gamePou.entidades.Pou;
+import mx.itson.gamePou.entidades.Producto;
+import mx.itson.gamePou.entidades.Seccion;
+import mx.itson.gamePou.implementacion.NegocioPou;
+import mx.itson.gamePou.implementacion.PersistenciaProducto;
+import mx.itson.gamePou.interfaz.IPouNegocio;
 
 /**
  * Frame utilizado para mostrar los produtos que el usuario puede comprar dependiendo la seccion

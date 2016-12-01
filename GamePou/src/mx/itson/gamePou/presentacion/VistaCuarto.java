@@ -7,16 +7,15 @@ package mx.itson.gamePou.presentacion;
 
 import java.util.ArrayList;
 import java.util.List;
-import mx.itson.libreriaPou.entidades.Pou;
-import mx.itson.libreriaPou.entidades.Producto;
-import mx.itson.libreriaPou.entidades.RegistroInventario;
-import mx.itson.libreriaPou.entidades.Seccion;
-import mx.itson.libreriaPou.implementacion.NegocioPou;
-import mx.itson.libreriaPou.implementacion.PersistenciaProducto;
-import mx.itson.libreriaPou.implementacion.PersistenciaRegistroInventario;
-import mx.itson.libreriaPou.interfaz.IPouNegocio;
-import mx.itson.libreriaPou.interfaz.IRegistroInventarioPersistencia;
-
+import mx.itson.gamePou.entidades.Pou;
+import mx.itson.gamePou.entidades.Producto;
+import mx.itson.gamePou.entidades.RegistroInventario;
+import mx.itson.gamePou.entidades.Seccion;
+import mx.itson.gamePou.implementacion.NegocioPou;
+import mx.itson.gamePou.implementacion.PersistenciaProducto;
+import mx.itson.gamePou.implementacion.PersistenciaRegistroInventario;
+import mx.itson.gamePou.interfaz.IPouNegocio;
+import mx.itson.gamePou.interfaz.IRegistroInventarioPersistencia;
 /**
  * Panel utilizado para mostrar la vista de la seccion Cuarto
  * @author SaulUrias
@@ -84,7 +83,7 @@ public class VistaCuarto extends javax.swing.JPanel {
         lblRefrigerador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRefrigerador.setText("Armario");
 
-        btn_Refrigerador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/nevera.png"))); // NOI18N
+        btn_Refrigerador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/armario 64.png"))); // NOI18N
         btn_Refrigerador.setBorderPainted(false);
         btn_Refrigerador.setContentAreaFilled(false);
         btn_Refrigerador.addActionListener(new java.awt.event.ActionListener() {
