@@ -255,7 +255,7 @@ public class VistaLaboratorio extends javax.swing.JPanel {
     public void obtenerPociones(){
         registros.clear();
         for (int i = 0; i < registrosbd.size(); i++) {
-            if (registrosbd.get(i).getCantidad() > 0 && registrosbd.get(i).getProducro().getSeccion() == Seccion.LABORATORIO) {
+            if (registrosbd.get(i).getCantidad() > 0 && registrosbd.get(i).getProducto().getSeccion() == Seccion.LABORATORIO) {
                 registros.add(registrosbd.get(i));
             }
         }
@@ -271,11 +271,11 @@ public class VistaLaboratorio extends javax.swing.JPanel {
      */
     public void mostrarProducto(){
         if (posicionProducto <= 0) {
-            lblCantidadComida.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
-            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
+            lblCantidadComida.setText(registros.get(0).getProducto().getNombre() + " X " + registros.get(0).getCantidad());
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+".png")));
         }else {
-            lblCantidadComida.setText(registros.get(posicionProducto-1).getProducro().getNombre() + " X " + registros.get(posicionProducto-1).getCantidad());
-            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto-1).getProducro().getNombre()+".png")));
+            lblCantidadComida.setText(registros.get(posicionProducto-1).getProducto().getNombre() + " X " + registros.get(posicionProducto-1).getCantidad());
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto-1).getProducto().getNombre()+".png")));
         } 
     } 
     /**
@@ -295,14 +295,14 @@ public class VistaLaboratorio extends javax.swing.JPanel {
      */
     public void cambiarProducto(){
         if (posicionProducto > registros.size()-1) {
-            lblCantidadComida.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
+            lblCantidadComida.setText(registros.get(0).getProducto().getNombre() + " X " + registros.get(0).getCantidad());
         
-            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+".png")));
             posicionProducto = 0;
         }else{
-            lblCantidadComida.setText(registros.get(posicionProducto).getProducro().getNombre() + " X " + registros.get(posicionProducto).getCantidad());
+            lblCantidadComida.setText(registros.get(posicionProducto).getProducto().getNombre() + " X " + registros.get(posicionProducto).getCantidad());
         
-            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto).getProducro().getNombre()+".png")));
+            btn_Pocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto).getProducto().getNombre()+".png")));
             
             posicionProducto++;
         }  

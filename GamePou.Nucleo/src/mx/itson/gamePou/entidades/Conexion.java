@@ -21,7 +21,7 @@ public class Conexion {
         try {
              String url = "jdbc:mysql://localhost:3306"; 
              String nombreDb = "/poudb";
-             String usuario = "root";
+             String usuario = "readWrite";
              String contrasenia = "";
              conn = DriverManager.getConnection(url+nombreDb,usuario,contrasenia);
              System.out.println("Conectado a " + nombreDb);

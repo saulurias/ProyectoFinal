@@ -38,24 +38,26 @@ public class Estante extends javax.swing.JFrame {
      * Metodo utilizado para obtener los productos dependiendo la seccion
      * @param seccion 
      */
+    
+    
     public void obtenerProductosSeccion(Seccion seccion) {
         if (seccion == Seccion.COCINA) {
             for (int i = 0; i < registrosbd.size(); i++) {
-                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.COCINA) {
+                if (registrosbd.get(i).getProducto().getSeccion() == Seccion.COCINA) {
                     registros.add(registrosbd.get(i));
                 }
             }
             mostrarProductos();
         }else if (seccion == Seccion.CUARTO){
             for (int i = 0; i < registrosbd.size(); i++) {
-                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.CUARTO) {
+                if (registrosbd.get(i).getProducto().getSeccion() == Seccion.CUARTO) {
                     registros.add(registrosbd.get(i));
                 }
             }
             mostrarProductosCuarto();
         }else if (seccion == Seccion.LABORATORIO){
             for (int i = 0; i < registrosbd.size(); i++) {
-                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.LABORATORIO) {
+                if (registrosbd.get(i).getProducto().getSeccion() == Seccion.LABORATORIO) {
                     registros.add(registrosbd.get(i));
                 }
             }
@@ -68,73 +70,73 @@ public class Estante extends javax.swing.JFrame {
      */
     public void mostrarProductos(){
        
-        lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
-        lblPrimera.setText(registros.get(0).getProducro().getNombre() + " X " + registros.get(0).getCantidad());
+        lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+".png")));
+        lblPrimera.setText(registros.get(0).getProducto().getNombre() + " X " + registros.get(0).getCantidad());
         
-        lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(1).getProducro().getNombre()+".png")));
-        lblSegunda.setText(registros.get(1).getProducro().getNombre() + " X " + registros.get(1).getCantidad());
+        lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(1).getProducto().getNombre()+".png")));
+        lblSegunda.setText(registros.get(1).getProducto().getNombre() + " X " + registros.get(1).getCantidad());
         
-        lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(2).getProducro().getNombre()+".png")));
-        lblTercera.setText(registros.get(2).getProducro().getNombre() + " X " + registros.get(2).getCantidad());
+        lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(2).getProducto().getNombre()+".png")));
+        lblTercera.setText(registros.get(2).getProducto().getNombre() + " X " + registros.get(2).getCantidad());
         
-        lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(3).getProducro().getNombre()+".png")));
-        lblCuarta.setText(registros.get(3).getProducro().getNombre() + " X " + registros.get(3).getCantidad());
+        lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(3).getProducto().getNombre()+".png")));
+        lblCuarta.setText(registros.get(3).getProducto().getNombre() + " X " + registros.get(3).getCantidad());
         
-        lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(4).getProducro().getNombre()+".png")));
-        lblQuinta.setText(registros.get(4).getProducro().getNombre() + " X " + registros.get(4).getCantidad());
+        lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(4).getProducto().getNombre()+".png")));
+        lblQuinta.setText(registros.get(4).getProducto().getNombre() + " X " + registros.get(4).getCantidad());
         
-        lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(5).getProducro().getNombre()+".png")));
-        lblSexta.setText(registros.get(5).getProducro().getNombre() + " X " + registros.get(5).getCantidad());
+        lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(5).getProducto().getNombre()+".png")));
+        lblSexta.setText(registros.get(5).getProducto().getNombre() + " X " + registros.get(5).getCantidad());
     }
     
     public void mostrarProductosCuarto(){
         
         if (registros.get(0).getCantidad() > 0) {
-            lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+"64.png")));
-            lblPrimera.setText(registros.get(0).getProducro().getNombre());
+            lblPrimeraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+"64.png")));
+            lblPrimera.setText(registros.get(0).getProducto().getNombre());
         }else {
             lblPrimeraImagen.setEnabled(false);
-            lblPrimera.setText(registros.get(0).getProducro().getNombre());
+            lblPrimera.setText(registros.get(0).getProducto().getNombre());
         }
         
         if (registros.get(1).getCantidad() > 0) {
-            lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(1).getProducro().getNombre()+"64.png")));
-            lblSegunda.setText(registros.get(1).getProducro().getNombre());
+            lblSegundaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(1).getProducto().getNombre()+"64.png")));
+            lblSegunda.setText(registros.get(1).getProducto().getNombre());
         }else {
             lblSegundaImagen.setEnabled(false);
-            lblSegunda.setText(registros.get(1).getProducro().getNombre());   
+            lblSegunda.setText(registros.get(1).getProducto().getNombre());   
         }
         
         if (registros.get(2).getCantidad() > 0) {
-            lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(2).getProducro().getNombre()+"64.png")));
-            lblTercera.setText(registros.get(2).getProducro().getNombre());
+            lblTerceraImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(2).getProducto().getNombre()+"64.png")));
+            lblTercera.setText(registros.get(2).getProducto().getNombre());
         }else {
             lblTerceraImagen.setEnabled(false);
-            lblTercera.setText(registros.get(2).getProducro().getNombre());
+            lblTercera.setText(registros.get(2).getProducto().getNombre());
         }
         
         if (registros.get(3).getCantidad() > 0) {
-            lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(3).getProducro().getNombre()+"64.png")));
-            lblCuarta.setText(registros.get(3).getProducro().getNombre());
+            lblCuartaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(3).getProducto().getNombre()+"64.png")));
+            lblCuarta.setText(registros.get(3).getProducto().getNombre());
         }else {
             lblCuartaImagen.setEnabled(false);
-            lblCuarta.setText(registros.get(3).getProducro().getNombre());
+            lblCuarta.setText(registros.get(3).getProducto().getNombre());
         }
         
         if (registros.get(4).getCantidad() > 0) {
-            lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(4).getProducro().getNombre()+"64.png")));
-            lblQuinta.setText(registros.get(4).getProducro().getNombre());
+            lblQuintaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(4).getProducto().getNombre()+"64.png")));
+            lblQuinta.setText(registros.get(4).getProducto().getNombre());
         }else {
             lblQuintaImagen.setEnabled(false);
-            lblQuinta.setText(registros.get(4).getProducro().getNombre());
+            lblQuinta.setText(registros.get(4).getProducto().getNombre());
         }
         
         if (registros.get(5).getCantidad() > 0) {
-            lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(5).getProducro().getNombre()+"64.png")));
-            lblSexta.setText(registros.get(5).getProducro().getNombre());
+            lblSextaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(5).getProducto().getNombre()+"64.png")));
+            lblSexta.setText(registros.get(5).getProducto().getNombre());
         }else {
             lblSextaImagen.setEnabled(false);
-            lblSexta.setText(registros.get(5).getProducro().getNombre());
+            lblSexta.setText(registros.get(5).getProducto().getNombre());
         }
     
     }

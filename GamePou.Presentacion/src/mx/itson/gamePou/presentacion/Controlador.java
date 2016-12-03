@@ -73,7 +73,7 @@ public class Controlador {
         Tienda tienda = new Tienda();
         tienda.setLocationRelativeTo(null);
         tienda.setVisible(true);
-        tienda.obtenerProductosSeccion(seccion);
+        tienda.llenarRegistros(seccion);
     }
     
     /**

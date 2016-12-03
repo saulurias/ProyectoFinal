@@ -249,7 +249,7 @@ public class VistaCuarto extends javax.swing.JPanel {
      */
     public void obtenerTrajes(){
         for (int i = 0; i < registrosbd.size(); i++) {
-            if (registrosbd.get(i).getCantidad() > 0 && registrosbd.get(i).getProducro().getSeccion() == Seccion.CUARTO) {
+            if (registrosbd.get(i).getCantidad() > 0 && registrosbd.get(i).getProducto().getSeccion() == Seccion.CUARTO) {
                 registros.add(registrosbd.get(i));
             }
         }
@@ -269,8 +269,8 @@ public class VistaCuarto extends javax.swing.JPanel {
     * Metodo utilizado para mostrar la imagen de Pou
     */
     public void mostrarProducto(){
-       lblCantidadComida.setText(registros.get(0).getProducro().getNombre());
-       btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+"64.png")));
+       lblCantidadComida.setText(registros.get(0).getProducto().getNombre());
+       btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+"64.png")));
     }
   
     /**
@@ -278,14 +278,14 @@ public class VistaCuarto extends javax.swing.JPanel {
      */
     public void cambiarProducto(){
         if (posicionProducto > registros.size()-1) {
-            lblCantidadComida.setText(registros.get(0).getProducro().getNombre());
+            lblCantidadComida.setText(registros.get(0).getProducto().getNombre());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+"64.png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+"64.png")));
             posicionProducto = 0;
         }else{
-            lblCantidadComida.setText(registros.get(posicionProducto).getProducro().getNombre());
+            lblCantidadComida.setText(registros.get(posicionProducto).getProducto().getNombre());
         
-            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto).getProducro().getNombre()+"64.png")));
+            btn_Comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto).getProducto().getNombre()+"64.png")));
             
             posicionProducto++;
         }  
@@ -296,11 +296,11 @@ public class VistaCuarto extends javax.swing.JPanel {
      */
     public void consumir(){
       if (posicionProducto > registros.size() || posicionProducto == 0) {
-            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducro().getNombre()+".png")));
+            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(0).getProducto().getNombre()+".png")));
             negocioPou.consumir(registros.get(0), pou);
             mostrarValoresPou();
         }else {
-            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto-1).getProducro().getNombre()+".png")));
+            lblImagePou.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/"+registros.get(posicionProducto-1).getProducto().getNombre()+".png")));
             negocioPou.consumir(registros.get(posicionProducto-1), pou);
             mostrarValoresPou();
         }

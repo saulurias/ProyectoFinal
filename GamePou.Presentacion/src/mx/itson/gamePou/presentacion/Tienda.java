@@ -45,85 +45,55 @@ public class Tienda extends javax.swing.JFrame {
     
     Pou pou = cont.obtenerPou();
     
-    List<Producto> productosbd = persistencia.obtenerProductos();
-    List<Producto> productos = new ArrayList();
+    
     
     IRegistroInventarioPersistencia persistenciaRegistro = new PersistenciaRegistroInventario();
     List<RegistroInventario> registrosbd = persistenciaRegistro.obtenerRegistrosInventario();
     List<RegistroInventario> registros = new ArrayList();
   
-    /**
-     * Metodo utilizado para obtener los productos dependiendo la seccion
-     * @param seccion 
-     */
-    public void obtenerProductosSeccion(Seccion seccion) {
-        if (seccion == Seccion.COCINA) {
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.COCINA) {
-                    productos.add(productosbd.get(i));
-                }
-            }
-            llenarRegistros(seccion);
-            mostrarProductos();
-        }else if (seccion == Seccion.CUARTO){
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.CUARTO) {
-                    productos.add(productosbd.get(i));
-                }
-            }
-            for (int i = 0; i < registrosbd.size(); i++) {
-                if (registrosbd.get(i).getProducro().getSeccion() == Seccion.CUARTO) {
-                    registros.add(registrosbd.get(i));
-                }
-            }
-            llenarRegistros(seccion);
-            mostrarProductosCuarto();
-        }else if (seccion == Seccion.LABORATORIO){
-            for (int i = 0; i < productosbd.size(); i++) {
-                if (productosbd.get(i).getSeccion() == Seccion.LABORATORIO) {
-                    productos.add(productosbd.get(i));
-                }
-            }
-            llenarRegistros(seccion);
-            mostrarProductos();
-        }
-    }
+ 
     
     public void llenarRegistros(Seccion seccion){
         for (int i = 0; i < registrosbd.size(); i++) {
-            if (registrosbd.get(i).getProducro().getSeccion() == seccion) {
+            if (registrosbd.get(i).getProducto().getSeccion() == seccion) {
                 registros.add(registrosbd.get(i));
             }
         }
+        if (seccion == Seccion.CUARTO) {
+            mostrarProductosCuarto();
+        }else {
+            mostrarProductos();
+        }
+        
     }
     
     /**
      * Metodo utilizado para mostrar los productos dentro de la Tienda
      */
     public void mostrarProductos() {
-        if (productos.size() == 0) {
+        if (registros.size() == 0) {
             JOptionPane.showMessageDialog(null, "No Hay productos para mostrar");
         } else {
 
             lblImagenMoneda.setText("x" + pou.getDinero());
             
-            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(0).getNombre() + ".png")));
-            lblPrimera.setText(registros.get(0).getProducro().getNombre() + " $" + productos.get(0).getCosto());
+            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(0).getProducto().getNombre() + ".png")));
+            lblPrimera.setText(registros.get(0).getProducto().getNombre() + " $" + registros.get(0).getProducto().getCosto());
 
-            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(1).getNombre() + ".png")));
-            lblSegunda.setText(registros.get(1).getProducro().getNombre() + " $" + productos.get(1).getCosto());
+            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(1).getProducto().getNombre() + ".png")));
+            lblSegunda.setText(registros.get(1).getProducto().getNombre() + " $" + registros.get(1).getProducto().getCosto());
 
-            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(2).getNombre() + ".png")));
-            lblTercera.setText(registros.get(2).getProducro().getNombre()+ " $" + productos.get(2).getCosto());
+            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(2).getProducto().getNombre() + ".png")));
+            lblTercera.setText(registros.get(2).getProducto().getNombre()+ " $" + registros.get(2).getProducto().getCosto());
 
-            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(3).getNombre() + ".png")));
-            lblCuarto.setText(registros.get(3).getProducro().getNombre() + " $" + productos.get(3).getCosto());
+            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(3).getProducto().getNombre() + ".png")));
+            lblCuarto.setText(registros.get(3).getProducto().getNombre() + " $" + registros.get(3).getProducto().getCosto());
 
-            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(4).getNombre() + ".png")));
-            lblQuinto.setText(registros.get(4).getProducro().getNombre() + " $" + productos.get(4).getCosto());
+            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(4).getProducto().getNombre() + ".png")));
+            lblQuinto.setText(registros.get(4).getProducto().getNombre() + " $" + registros.get(4).getProducto().getCosto());
 
-            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + productos.get(5).getNombre() + ".png")));
-            lblSexto.setText(registros.get(5).getProducro().getNombre() + " $" + productos.get(5).getCosto());
+            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(5).getProducto().getNombre() + ".png")));
+            lblSexto.setText(registros.get(5).getProducto().getNombre() + " $" + registros.get(5).getProducto().getCosto());
         }
 
     }
@@ -132,50 +102,50 @@ public class Tienda extends javax.swing.JFrame {
         lblImagenMoneda.setText("x" + pou.getDinero());
         
         if (registros.get(0).getCantidad() <= 0) {
-            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(0).getProducro().getNombre() + "64.png")));
-            lblPrimera.setText(registros.get(0).getProducro().getNombre() + " $" + registros.get(0).getProducro().getCosto());
+            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(0).getProducto().getNombre() + "64.png")));
+            lblPrimera.setText(registros.get(0).getProducto().getNombre() + " $" + registros.get(0).getProducto().getCosto());
         } else {
-            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(0).getProducro().getNombre() + "64.png")));
+            btn_Primero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(0).getProducto().getNombre() + "64.png")));
             btn_Primero.setEnabled(false);
             lblPrimera.setText("Skin Comprada");
         }
         if (registros.get(1).getCantidad() <= 0) {
-            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(1).getProducro().getNombre() + "64.png")));
-            lblSegunda.setText(registros.get(1).getProducro().getNombre() + " $" + registros.get(1).getProducro().getCosto());
+            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(1).getProducto().getNombre() + "64.png")));
+            lblSegunda.setText(registros.get(1).getProducto().getNombre() + " $" + registros.get(1).getProducto().getCosto());
         } else {
-            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(1).getProducro().getNombre() + "64.png")));
+            btn_Segundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(1).getProducto().getNombre() + "64.png")));
             btn_Segundo.setEnabled(false);
             lblSegunda.setText("Skin Comprada");
         }
         if (registros.get(2).getCantidad() <= 0) {
-            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(2).getProducro().getNombre() + "64.png")));
-            lblTercera.setText(registros.get(2).getProducro().getNombre() + " $" + registros.get(2).getProducro().getCosto());
+            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(2).getProducto().getNombre() + "64.png")));
+            lblTercera.setText(registros.get(2).getProducto().getNombre() + " $" + registros.get(2).getProducto().getCosto());
         } else {
-            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(2).getProducro().getNombre() + "64.png")));
+            btn_Tercero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(2).getProducto().getNombre() + "64.png")));
             btn_Tercero.setEnabled(false);
             lblTercera.setText("Skin Comprada");
         }
         if (registros.get(3).getCantidad() <= 0) {
-            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(3).getProducro().getNombre() + "64.png")));
-            lblCuarto.setText(registros.get(3).getProducro().getNombre() + " $" + registros.get(3).getProducro().getCosto());
+            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(3).getProducto().getNombre() + "64.png")));
+            lblCuarto.setText(registros.get(3).getProducto().getNombre() + " $" + registros.get(3).getProducto().getCosto());
         } else {
-            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(3).getProducro().getNombre() + "64.png")));
+            btn_Cuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(3).getProducto().getNombre() + "64.png")));
             btn_Cuarto.setEnabled(false);
             lblCuarto.setText("Skin Comprada");
         }
         if (registros.get(4).getCantidad() <= 0) {
-            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(4).getProducro().getNombre() + "64.png")));
-            lblQuinto.setText(registros.get(4).getProducro().getNombre() + " $" + registros.get(4).getProducro().getCosto());
+            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(4).getProducto().getNombre() + "64.png")));
+            lblQuinto.setText(registros.get(4).getProducto().getNombre() + " $" + registros.get(4).getProducto().getCosto());
         } else {
-            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(4).getProducro().getNombre() + "64.png")));
+            btn_Quinto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(4).getProducto().getNombre() + "64.png")));
             btn_Quinto.setEnabled(false);
             lblQuinto.setText("Skin Comprada");
         }
         if (registros.get(5).getCantidad() <= 0) {
-            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(5).getProducro().getNombre() + "64.png")));
-            lblSexto.setText(registros.get(5).getProducro().getNombre() + " $" + registros.get(5).getProducro().getCosto());
+            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(5).getProducto().getNombre() + "64.png")));
+            lblSexto.setText(registros.get(5).getProducto().getNombre() + " $" + registros.get(5).getProducto().getCosto());
         } else {
-            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(5).getProducro().getNombre() + "64.png")));
+            btn_Sexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/gamePouimages/" + registros.get(5).getProducto().getNombre() + "64.png")));
             btn_Sexto.setEnabled(false);
             lblSexto.setText("Skin Comprada");
         }
@@ -357,7 +327,7 @@ public class Tienda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_PrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrimeroActionPerformed
-        Producto producto = registros.get(0).getProducro();
+        Producto producto = registros.get(0).getProducto();
         RegistroInventario registro = registros.get(0);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);
@@ -365,7 +335,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_PrimeroActionPerformed
 
     private void btn_SegundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SegundoActionPerformed
-        Producto producto = registros.get(1).getProducro();
+        Producto producto = registros.get(1).getProducto();
         RegistroInventario registro = registros.get(1);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);
@@ -373,7 +343,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SegundoActionPerformed
 
     private void btn_TerceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TerceroActionPerformed
-        Producto producto = registros.get(2).getProducro();
+        Producto producto = registros.get(2).getProducto();
         RegistroInventario registro = registros.get(2);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);
@@ -382,7 +352,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TerceroActionPerformed
 
     private void btn_QuintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_QuintoActionPerformed
-        Producto producto = registros.get(4).getProducro();
+        Producto producto = registros.get(4).getProducto();
         RegistroInventario registro = registros.get(4);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);
@@ -390,7 +360,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_QuintoActionPerformed
 
     private void btn_SextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SextoActionPerformed
-        Producto producto = registros.get(5).getProducro();
+        Producto producto = registros.get(5).getProducto();
         RegistroInventario registro = registros.get(5);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);
@@ -398,7 +368,7 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SextoActionPerformed
 
     private void btn_CuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CuartoActionPerformed
-        Producto producto = registros.get(3).getProducro();
+        Producto producto = registros.get(3).getProducto();
         RegistroInventario registro = registros.get(3);
         negocioPou.comprar(producto, pou);
         negocioRegistro.comprar(registro, pou);

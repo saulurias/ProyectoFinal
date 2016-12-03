@@ -37,10 +37,10 @@ public class NegocioPou implements IPouNegocio{
          /**
          * Se obtienen los valores que el producto tiene
          */
-        int hambre = registro.getProducro().getValorHambre();
-        int salud = registro.getProducro().getValorSalud();
-        int energia = registro.getProducro().getValorEnergia();
-        int felicidad = registro.getProducro().getValorFelicidad();
+        int hambre = registro.getProducto().getValorHambre();
+        int salud = registro.getProducto().getValorSalud();
+        int energia = registro.getProducto().getValorEnergia();
+        int felicidad = registro.getProducto().getValorFelicidad();
         
         
         /**

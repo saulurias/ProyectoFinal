@@ -10,20 +10,20 @@ package mx.itson.gamePou.entidades;
  * @author SaulUrias
  */
 public class RegistroInventario {
-    private Producto producro;
+    private Producto producto;
     private int cantidad;
 
-    public RegistroInventario(Producto producro, int cantidad) {
-        this.producro = producro;
+    public RegistroInventario(Producto producto, int cantidad) {
+        this.producto = producto;
         this.cantidad = cantidad;
     }
     
-    public Producto getProducro() {
-        return producro;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProducro(Producto producro) {
-        this.producro = producro;
+    public void setProducro(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad() {

@@ -32,7 +32,7 @@ public class NegocioRegistroInventario implements IRegistroInventarioNegocio{
 
     @Override
     public void comprar(RegistroInventario registro, Pou pou) {
-        int costoProducto = registro.getProducro().getCosto();
+        int costoProducto = registro.getProducto().getCosto();
         if (pou.getDinero() > costoProducto) {
             int cantidad = registro.getCantidad();
             registro.setCantidad(cantidad+1);

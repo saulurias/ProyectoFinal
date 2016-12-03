@@ -30,7 +30,7 @@ public class PersistenciaRegistroInventario implements IRegistroInventarioPersis
     @Override
     public void ActualizarRegistroInventario(RegistroInventario registro) {
         try {
-           String query = "UPDATE registroInventario SET cantidad =" + registro.getCantidad() +" WHERE idProducto = '"+ registro.getProducro().getId() +"';";
+           String query = "UPDATE registroInventario SET cantidad =" + registro.getCantidad() +" WHERE idProducto = '"+ registro.getProducto().getId() +"';";
                     
            PreparedStatement pst = conn.prepareStatement(query);
            pst.execute();
